@@ -28,7 +28,7 @@
   
 
   //TRABALHAR COM SESSOES
-  //const session = require('cookie-session')
+  const session = require('cookie-session')
   
   //TRABALHAR COM COOOKIES
   const flash = require('connect-flash')
@@ -36,11 +36,11 @@
   //CONFIGURACOES    
   
     //SESSÃO
-    //app.use(session({
-    //secret: 'pneuinspector',
-    //resave: true,
-    //saveUninitialized: true
-    //})) 
+    app.use(session({
+    secret: 'pneuinspector',
+    resave: true,
+    saveUninitialized: true
+    })) 
     app.use(flash())      
     
     //MIDDLEWARE
