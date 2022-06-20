@@ -1,0 +1,105 @@
+
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{texto}}
+    </div>
+{{/each}}  
+ 
+<body>
+
+   <div class="testbox">
+  
+    <form id="motForm" action ="/posts/motoristas" name ="motForm" method="POST">       
+      
+      <div class="bannerMot">
+        <h1><b>Cadastro de Motoristas</b></h1>
+      </div>
+      
+    
+                
+      <div class="position-item">
+        <div class="item">
+          <p>Nome<span class="required">*</span></p>
+          <input type="text" name="nome" id="nome" required/>
+        </div>
+        <div class="item">
+          <p>Tipo colaborador<span class="required">*</span></p>
+          <select type="text" id="tipo" name="tipo" required>
+            <option value=""></option>
+            <option value="PRÓPRIO">PRÓPRIO</option>
+            <option value="TERCEIRIZADO">TERCEIRIZADO</option>
+            <option value="OUTROS">OUTROS</option>
+          </select>  
+        </div>
+      </div>
+
+      <div class="position-item">
+        <div class="item">
+          <p>Email<span class="required"></span></p>
+          <input type="email" name="email" id="email">
+        </div>
+        <div class="item">
+          <p>Contato<span class="required">*</span></p>
+          <input type="text" id="contato" name="contato" required>
+        </div>
+      </div>
+
+      <div class="position-item">
+        
+        <div class="item">
+          <p>Matricula<span class="required">*</span></p>
+          <input type="text" id="matricula" name="matricula" required>
+        </div>
+
+        <div class="item">
+          <p>Cargo<span class="required">*</span></p>
+          <select id="desc_cargo" name="desc_cargo" required>
+              <option value=""></option>
+            <option value="MOT. VEICULO PESADO">MOT. VEICULO PESADO</option>
+            <option value="MOT. VEICULO LEVE">MOT. VEICULO LEVE</option>
+          </select>   
+        </div>          
+      </div>
+      
+      <div class="position-item">             
+        <div class="item">
+          <p>Local de trabalho<span class="required">*</span></p>
+          <select id="desc_local" name="desc_local"required>
+            <option value=""></option>
+            <option value="MATRIZ">MATRIZ</option>
+            <option value="FILIAL 1">FILIAL 1</option>
+            <option value="FILIAL 2">FILIAL 2</option>
+            <option value="PÁTIO 1">PÁTIO 1</option>
+            <option value="PÁTIO 2">PÁTIO 2</option>
+            <option value="GARAGEM 1">GARAGEM 1</option>
+            <option value="GARAGEM 2">GARAGEM 2</option>
+          </select>  
+        </div>
+      
+        <div class="item">
+            
+          <p>Categoria CNH<span class="required">*</span></p>
+          <select id="categoria_cnh" name="categoria_cnh"required>
+            <option value=""></option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+          </select>  
+        </div>
+      </div>  
+
+      <div class="position-item">          
+        <div class="item">
+          <p>Validade<span class="required">*</span></p>
+          <input type="date" id="validade" name="validade" required>
+        </div>
+       
+      </div>        
+      <div class="btn-block">
+        <button type="submit">Registrar</button>
+      </div>
+    </form>
+  </div>
+</body>

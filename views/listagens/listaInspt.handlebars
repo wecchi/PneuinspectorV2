@@ -1,0 +1,102 @@
+
+  <script>
+     
+   var array=[];
+   {{#each Inspetores}}
+   console.log({{id}})
+      array.push([
+      {{id}},
+      '{{nome}}',
+      '{{email}}',
+      '{{contato}}',
+      '{{matricula}}',     
+      moment('{{createdAt}}').format('DD/MM/YYYY hh:mm'),
+      moment('{{updatedAt}}').format('DD/MM/YYYY hh:mm')  
+      ])
+   {{/each}}
+  
+   $(document).ready(
+      function () {  
+         var table =$('#Registros').DataTable(
+            {
+               data: array,
+               columns: [
+               { title: "id"},
+               { title: "nome"},
+               { title: "email"},
+               { title: "contato"},
+               { title: "matricula"},
+               { title: "created"},
+               { title: "updated"}
+               ],
+               "language": {
+               "lengthMenu": "Mostrar _MENU_",
+               "zeroRecords": "Sem resultados",
+               "info": "Pagina _PAGE_ de _PAGES_",
+               "infoEmpty": "Sem resultados",
+               "infoFiltered": "(Filtro _MAX_ registros)",
+               "search":" Procurar ",
+               "first": "Primeiro",
+               "last": "Último",
+               "next": "Próximo",
+               "previous": "Anterior"
+               },
+
+               dom: 'Bfrtip',
+               select: true,
+               buttons: [             
+                  {  
+                     text: 'Editar',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                        }else{
+                          var id = table.rows( { selected: true } ).data()[0][0]; 
+                           window.location = '/edits/inspetores/'+id;   
+                        }
+                     }
+                  },
+                  {  
+                     text: 'Excluir',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                         }else{
+                          var id = table.rows( { selected: true } ).data()[0][0];
+                          var inspetor = table.rows( { selected: true } ).data()[0][1]; 
+                           var txt;
+                           if (confirm("Confirma a exclusão do(a) motorista "+ inspetor+" ?")) {
+                                 window.location = '/dels/inspetores/'+id;  
+                           } 
+                        }
+                     }
+                  },
+                  {  
+                     text: 'Novo',
+                     action: function (e, dt, button, config) {
+                        window.location = '/cadastros/inspetores/';
+                        
+                           
+                     }
+                  }
+               ]
+            
+            }            
+         );
+      }    
+   ) 
+</script> 
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{texto}}
+    </div>
+{{/each}}  
+ 
+<br>
+<h3><b> INSPETORES</b></h3>
+<p id="demo"></p>
+<div class="table-wrapper">
+   <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
+</div>

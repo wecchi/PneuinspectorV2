@@ -1,0 +1,285 @@
+html, body {
+min-height: 100%;
+padding: 15px;
+font-family: 'Roboto'
+
+}
+body, div, input, select, p { 
+padding: 0;
+margin: 0;
+outline: none;
+font-family: 'Roboto';
+font-size: 14px;
+color: #666;
+line-height: 22px;
+
+}
+.navbar a:hover {
+  background: #16A085; 
+  color: black;
+}
+  
+  
+h1 {
+position: absolute;
+margin: 2;
+font-size: 40px;
+font-weight: bold;
+color: rgb(0, 0, 0);
+z-index: 2;
+text-shadow: 
+-1px -1px 0px #FFF, 
+-1px 1px 0px #FFF,      
+ 1px -1px 0px #FFF,    
+ 1px 0px 0px #FFF;
+}
+
+h3 {
+
+margin: 3;
+font-size: 20px;
+font-weight: bold;
+color: rgb(0, 0, 0);
+
+}
+
+p.top-info {
+margin: 10px 0;
+}
+.testbox {
+margin-top: 20px;
+display: flex;
+justify-content: center;
+align-items: top;
+height: inherit;
+padding:3px;
+
+}
+form {
+width: 100%;
+padding: 15px;
+border-radius: 6px;
+background: #fff;
+box-shadow: 0 0 25px 0 #505152; 
+}
+
+.bannerMot,.bannerVeic,.bannerPneu,.bannerEmp,.bannerInspt  {
+position: relative;
+height: 140px;
+background-size: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+
+}
+
+.bannerMot  {background-image: url("/img/driver.jpg")}
+.bannerVeic  {background-image: url("/img/truck.jpg")}
+.bannerPneu  {background-image: url("/img/tire.png")}
+.bannerEmp  {background-image: url("/img/emp.jpg")}
+.bannerInspt  {background-image: url("/img/inspetor.jpg")}
+.bannerInsp  {background-image: url("/img/logo2.jpg")}
+
+.bannerVeic::after {
+    
+content: "";
+position: absolute;
+width: 100%;
+height: 100%;
+}
+
+input, select, textarea {
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 3px;
+}
+input {
+width: calc(100% - 10px);
+padding: 5px;
+}
+input[type="date"] {
+padding: 4px 5px;
+}
+select {
+width: 100%;
+padding: 7px 0;
+background: transparent;
+}
+.item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+color: #1c87c9;
+}
+.item input:hover, .item select:hover {
+border: 1px solid transparent;
+box-shadow: 0 0 6px 0 #1c87c9;
+color: #1c87c9;
+}
+.item {
+position: relative;
+margin: 10px 0;
+}
+
+.itema {
+ 
+  width:15%;
+  margin-left: 10px;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+display: none;
+}
+.item i, input[type="date"]::-webkit-calendar-picker-indicator {
+position: absolute;
+font-size: 20px;
+color: #a9a9a9;
+}
+.item i {
+right: 2%;
+top: 30px;
+z-index: 1;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+right: 1%;
+z-index: 2;
+opacity: 0;
+cursor: pointer;
+}
+input[type=radio]  {
+display: none;
+}
+label.radio {
+position: relative;
+display: inline-block;
+margin: 5px 20px 10px 0;
+cursor: pointer;
+}
+.question span {
+margin-left: 30px;
+}
+span.required {
+margin-left: 0;
+color: red;
+}
+label.radio:before {
+content: "";
+position: absolute;
+left: 0;
+width: 17px;
+height: 17px;
+border-radius: 50%;
+border: 2px solid #ccc;
+}
+input[type=radio]:checked + label:before, label.radio:hover:before {
+border: 2px solid #1c87c9;
+}
+label.radio:after {
+content: "";
+position: absolute;
+top: 6px;
+left: 5px;
+width: 8px;
+height: 4px;
+border: 3px solid #1c87c9;
+border-top: none;
+border-right: none;
+transform: rotate(-45deg);
+opacity: 0;
+}
+input[type=radio]:checked + label:after {
+opacity: 1;
+}
+.btn-block {
+margin-top: 10px;
+text-align: center;
+}
+button {
+width: auto;
+padding: 10px;
+border: none;
+border-radius: 5px; 
+background: #1c87c9;
+font-size: 16px;
+font-weight: 700;
+color: #fff;
+cursor: pointer;
+}
+button:hover {
+background: #1e6fa0;
+}
+
+@media (min-width: 568px) {
+    .name-item, .contact-item, .position-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    .name-item input {
+    width: calc(50% - 20px);
+    }
+    .contact-item .item, .position-item .item {
+    width: calc(50% - 8px);
+    }
+    .contact-item input, .position-item input {
+    width: calc(100% - 12px);
+    }
+    .position-item select {
+    width: 100%;
+    }
+}
+
+    
+/* Table Styles */
+
+
+/* Responsive */
+
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.jumbotron{
+  background-color: #EAF2F8 ;
+
+}
+
+
+
+
+  
+

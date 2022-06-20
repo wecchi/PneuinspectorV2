@@ -1,0 +1,107 @@
+
+  <script>
+     
+   var array=[];
+   {{#each Motoristas}}
+      array.push([
+      {{id}},
+      '{{nome}}',
+      '{{email}}',
+      '{{contato}}',
+      '{{matricula}}',
+      '{{desc_cargo}}',
+      '{{desc_local}}',
+      '{{tipo}}',
+      moment('{{createdAt}}').format('DD/MM/YYYY hh:mm'),
+      moment('{{updatedAt}}').format('DD/MM/YYYY hh:mm')  
+      ])
+   {{/each}}
+  
+   $(document).ready(
+      function () {  
+         var table =$('#Registros').DataTable(
+            {
+               data: array,
+               columns: [
+               { title: "id"},
+               { title: "nome"},
+               { title: "email"},
+               { title: "contato"},
+               { title: "matricula"},
+               { title: "desc_cargo"},
+               { title: "desc_local"},
+               { title: "tipo"},
+               { title: "created"},
+               { title: "updated"}
+               ],
+               "language": {
+               "lengthMenu": "Mostrar _MENU_",
+               "zeroRecords": "Sem resultados",
+               "info": "Pagina _PAGE_ de _PAGES_",
+               "infoEmpty": "Sem resultados",
+               "infoFiltered": "(Filtro _MAX_ registros)",
+               "search":" Procurar ",
+               "first": "Primeiro",
+               "last": "Último",
+               "next": "Próximo",
+               "previous": "Anterior"
+               },
+
+               dom: 'Bfrtip',
+               select: true,
+               buttons: [             
+                  {  
+                     text: 'Editar',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                        }else{
+                          var id = table.rows( { selected: true } ).data()[0][0]; 
+                           window.location = '/edits/motoristas/'+id;   
+                        }
+                     }
+                  },
+                  {  
+                     text: 'Excluir',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                         }else{
+                          var id = table.rows( { selected: true } ).data()[0][0];
+                          var motorista = table.rows( { selected: true } ).data()[0][1]; 
+                           var txt;
+                           if (confirm("Confirma a exclusão do(a) motorista "+ motorista+" ?")) {
+                                 window.location = '/dels/pneus/'+id;  
+                           } 
+                        }
+                     }
+                  },
+                  {  
+                     text: 'Novo',
+                     action: function (e, dt, button, config) {
+                        window.location = '/cadastros/motoristas/';
+                        
+                           
+                     }
+                  }
+               ]
+            
+            }            
+         );
+      }    
+   ) 
+</script> 
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{texto}}
+    </div>
+{{/each}}  
+ 
+<br>
+<h3><b> MOTORISTAS</b></h3>
+<p id="demo"></p>
+<div class="table-wrapper">
+   <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
+</div>

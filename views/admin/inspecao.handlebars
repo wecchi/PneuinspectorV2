@@ -1,0 +1,388 @@
+
+<script>
+    
+    var arrayInsp=[];
+    {{#each Inspecoes}}   
+        arrayInsp.push([
+        {{id}},
+        '{{nroFogo}}',
+        '{{quilometragem}}',
+        '{{sulco}}',
+        '{{resultado}}',  
+         moment('{{createdAt}}').format('DD/MM/YY')  
+        ])
+    {{/each}}
+
+    var arrayInspt=[];
+    {{#each Inspetores}}   
+        arrayInspt.push([
+        {{id}},
+        '{{matricula}}',
+        '{{nome}}'  
+        ])
+    {{/each}}
+
+    var arrayMot=[];
+    {{#each Motoristas}}   
+        arrayMot.push([
+        {{id}},
+        '{{matricula}}',
+        '{{nome}}'  
+        ])
+    {{/each}}
+
+    var arrayVeic=[];
+    {{#each Veiculos}}   
+        arrayVeic.push([
+        {{id}},
+        '{{placas}}',
+        '{{tipo}}',
+        '{{modelo}}',
+        '{{fabricante}}',
+        '{{qtepneus}}'
+        ])
+    {{/each}}
+
+    $(document).ready(()=>{
+        var time=moment(new Date().getTime()).format('DD/MM/YYYY hh:mm')
+        $("#two").hide()    
+        $("#matriculaInsp").focus()       
+        $("#timestampStart").val(time)        
+        $('#matriculaInspt,#matriculaMot,#placas,#nroFogo').click(           
+            function(){               
+                $(this).val("")
+            }
+        )
+
+        $('#matriculaInspt').change(   
+              
+            function(){  
+                $("#nomeInsp").prop('readonly',false)      
+                var matriculaInspt=$(this).val()  
+                var insptDatas=[]                   
+                for(var i=0;i<arrayInspt.length;i++){
+                    if(arrayInspt[i][1]==matriculaInspt){
+                        console.log("in")
+                        insptDatas.push(
+                            [
+                                arrayInspt[i][2]
+                            ]    
+                        )
+                        $("#nomeInsp").prop('readonly',true)    
+                   }break
+                } 
+                $('#nomeInsp').val(insptDatas)           
+               
+            }
+        )
+
+
+         $('#matriculaMot').change(           
+            function(){  
+                $("#nomeMot").prop('readonly',false) 
+                var matriculaMot=$(this).val()  
+                var motDatas=[]                   
+                for(var i=0;i<arrayMot.length;i++){
+                    if(arrayMot[i][1]==matriculaMot){
+                        motDatas.push(
+                            [
+                                arrayMot[i][2]
+                            ]    
+                        )
+                        $("#nomeMot").prop('readonly',true)    
+                    }break
+                } 
+                $('#nomeMot').val(motDatas)           
+               
+            }
+        )
+
+        $('#placas').change(           
+            function(){  
+                var placa=$(this).val()  
+                var veicDatas=[]                   
+                for(var i=0;i<arrayVeic.length;i++){
+                    if(arrayVeic[i][1]==placa){
+                        veicDatas.push(
+                            [
+                                "Tipo :"+arrayVeic[i][2]+"\n",
+                                "Modelo :"+arrayVeic[i][3]+"\n",
+                                "Fabr :"+arrayVeic[i][4]+"\n",
+                                "Eixos :"+arrayVeic[i][5]
+                            ]    
+                        )
+                   }break;
+                } 
+                $('#descVeic').val(veicDatas)           
+               
+            }
+        )
+
+        var table =$('#Registros').DataTable(
+            {  
+                select: {
+                    style: 'single'
+                },
+                limit:5,
+
+                data: arrayInsp,
+                columns: [
+                    { title: "id"},
+                    { title: "nfog"},
+                    { title: "Km"},
+                    { title: "sul"},
+                    { title: "res"},                  
+                    { title: "Time"}
+                ],
+                "language": {
+                "lengthMenu": "Mostrar _MENU_",
+                "zeroRecords": "Sem resultados",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem resultados",
+                "infoFiltered": "(Filtro _MAX_ registros)",
+                "search":" Procurar ",
+                "first": "Primeiro",
+                "last": "Último",
+                "next": "Próximo",
+                "previous": "Anterior"
+                },  
+                
+                "columnDefs": [
+                { "width": "5px", "targets": 0 },
+                { "width": "5px", "targets": 1 },
+                { "width": "5px", "targets": 2 },
+                { "width": "5px", "targets": 3 },
+                { "width": "5px", "targets": 4 },
+                { "width": "5px", "targets": 5 }
+                ],
+
+                dom: 'rt<"bottom"flpi><"clear">',
+                select: true
+               
+                
+            }                     
+        );
+        
+        $('#inspHist').click(
+            function(){  
+                var fogo=$('#nroFogo').val()
+                if(fogo){ 
+                      
+                    table.columns(1).search(fogo).draw();
+                    $("#one").hide()
+                    $("#two").show()
+                }else{
+                    alert("Insira um numero de fogo")
+                }    
+                    
+            }
+        )
+
+        $('#closeHist').click(
+            function(){  
+               $("#one").show()
+               $("#two").hide()
+               $("#eixo").focus()
+            }
+        )
+    }) 
+</script>  
+
+ 
+
+ 
+
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{texto}}
+    </div>
+{{/each}}  
+    
+  
+    <form id="motForm" action ="/posts/inspecao" name ="motForm" method="POST" style="width:99%">   
+
+        <div class="position-item">      
+            
+            </div><div id="one">     
+                <div class="item">
+                    <p>Data/Hora inicio<span class="required">*</span></p>
+                    <input type="text" id="timestampStart" name="timestampStart" class="form-control" readonly required>
+                </div>           
+                
+                <div class="item">
+                    <p>Matricula do(a) Inspetor(a)<span class="required">*</span></p>
+                    <input type="text" list="inspList" id="matriculaInspt" name="matriculaInspt" class="form-control" required >
+                    <datalist id="inspList">
+                        <option value=""></option>
+                        {{#each Inspetores}}    
+                        <option value={{matricula}}>{{matricula}}</option>  
+                        {{/each}}  
+                    </datalist>
+                </div> 
+
+                <div class="item">
+                    <p>Nome do(a) Inspetor(a)<span class="required">*</span></p>
+                    <input type="text" id="nomeInsp" name="nomeInsp" class="form-control"> 
+                    
+                </div> 
+
+            
+                <div class="item">
+                    <p>Matricula do(a) Motorista</span class="required">*</span></p>
+                    <input type="text" list="motList" id="matriculaMot" name="matriculaMot" class="form-control" required>
+                    <datalist id="motList">
+                        <option value=""></option>
+                        {{#each Motoristas}}    
+                            <option value={{matricula}}>{{matricula}}</option>  
+                        {{/each}}      
+                    </datalist>
+                </div>
+
+                <div class="item">
+                    <p>Nome do(a) Motorista</span class="required">*</span></p>
+                    <input type="text" id="nomeMot" name="nomeMot" class="form-control">
+                </div>
+                                 
+                <div class="item">
+                    <p>Placas do Veículo<span class="required">*</span></p>
+                    <input type="text" list="placasList" id="placas" name="placas"  class="form-control" required>
+                    <datalist  id="placasList">
+                        <option value=""></option>
+                        {{#each Veiculos}}    
+                        <option value={{placas}}>{{placas}}</option>  
+                        {{/each}}  
+                    </select>
+                </div> 
+
+                <div class="item">
+                    <p>Descricão do Veiculo<span class="required">*</span></p>
+                    <textarea id="descVeic" name="descVeic" class="form-control" rows="5" columns="20" readonly ></textarea>
+                </div> 
+
+                <div class="item">
+                    <p>Quilometragem<span class="required">*</span></p>
+                    <input type="number" id="quilometragem" name="quilometragem" class="form-control" required>
+                </div>
+
+                
+                <div class="item">
+                    <p>Nro de fogo do Pneu<span class="required">*</span></p>
+                    <input type="text" list="fogoList" id="nroFogo" name="nroFogo" class="form-control" required>
+                    <datalist id = "fogoList">
+                        <option value=""></option>
+                        {{#each Pneus}}    
+                        <option value={{nro_fogo}}>{{nro_fogo}}</option>  
+                        {{/each}}    
+                    </select>
+                </div>
+
+                <div class="item">
+                    <button type="button" id="inspHist" name="inspHist"class="btn btn-primary btn-block rounded">histórico de inspeções</button>
+                </div>              
+                
+
+              
+                <div class="item">
+                    <p>Eixo<span class="required">*</span></p>
+                    <select type="text" id="eixo" name="eixo" class="form-control" required>
+                       <option value=""></option>
+                        <option value="ESTOQUE">ESTOQUE</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="4">5</option>
+                        <option value="4">6</option>
+                    </select>
+                </div>
+
+                <div class="item">
+                    <p>Lado<span class="required">*</span></p>
+                    <select type="text" id="lado" name="lado" class="form-control" required>
+                        <option value=""></option>
+                        <option value="ESTOQUE">ESTOQUE</option>
+                        <option value="DIREITO">DIREITO</option>
+                        <option value="ESQUERDO">ESQUERDO</option>
+                    </select>
+                </div>
+
+                <div class="item">
+                    <p>Posicao<span class="required">*</span></p>
+                    <select type="text" id="posicao" name="posicao" class="form-control" required>
+                        <option value=""></option>
+                        <option value="ESTOQUE ">ESTOQUE</option>
+                        <option value="EXTERNO">EXTERNO</option>
+                        <option value="INTERNO">INTERNO</option> 
+                    </select>
+                </div>           
+
+                <div class="item">
+                    <p>Sulco mm<span class="required">*</span></p>
+                    <input type="number" id="sulco" name="sulco" class="form-control" required>
+                </div>
+
+                <div class="item">
+                    <p>Pressao bars<span class="required">*</span></p>
+                    <input type="number" id="pressao" name="pressao" class="form-control" required>
+                </div>        
+
+                <div class="item">
+                    <p>Resumo da inspeção<span class="required">*</span></p>
+                    <select type="text" id="classificacao" name="classificacao" class="form-control" required>              
+                        <option value=""></option>
+                        <option value="PNEU EM BOM ESTADO">PNEU EM BOM ESTADO</option>
+                        <option value="PNEU EM MAU ESTADO - PERIGO">PNEU EM MAU ESTADO - PERIGO</option>
+                        <option value="DANO GRAVE LATERAL">DANO GRAVE LATERAL</option>
+                        <option value="DANO GRAVE COROA">DANO GRAVE COROA</option>
+                        <option value="DANO GRAVE TALAO">DANO GRAVE TALAO</option>
+                        <option value="PNEU RODOU VAZIO">PNEU RODOU VAZIO</option>
+                        <option value="RODA DANIFICADA">RODA DANIFICADA</option>
+                        <option value="PNEU FURADO">PNEU FURADO</option>
+                        <option value="PNEU EM ALERTA-SUCATA">PNEU EM ALERTA-SUCATA</option>
+                        <option value="PERFURACAO LATERAL">PERFURACAO LATERAL</option>
+                        <option value="DESEMPARELHADO">DESEMPARELHADO</option>
+                        <option value="RODIZIO NECESSARIO">RODIZIO NECESSARIO</option>
+                        <option value="DESENHO INCOMPATIVEL">DESENHO INCOMPATIVEL</option>
+                        <option value="INDICIO FADIGA CARCACA">INDICIO FADIGA CARCACA</option>
+                        <option value="DESALINHAMENTO">DESALINHAMENTO</option>
+                        <option value="LISO - REFORMAR">LISO - REFORMAR</option>
+                    </select>
+                </div>
+
+                <div class="item">
+                    <p>Parecer final da inspeção<span class="required">*</span></p>
+                    <select type="text" id="resultado" name="resultado" class="form-control" required>
+                        <option value=""></option>
+                        <option value="APROVADO">APROVADO</option> 
+                        <option value="APROVADO COM RESALVAS">APROVADO COM RESSALVAS</option>  
+                        <option value="REPROVADO">REPROVADO</option>  
+                    </select>
+                </div>
+
+                <div class="item">
+                    <p>Observações sobre a inspeção<span class="required">*</span></p>
+                    <textarea type="text" id="observacoes" name="observacoes" class="overflow-auto form-control" rows="3" cols="38"></textarea>
+                </div>
+
+                <div class="item">
+                    <button type="submit" id="submit" name="submit"class="btn btn-success btn-block rounded">Registrar inspeção ✔</button>
+                </div> 
+            </div> 
+
+                      
+            </div>
+
+            <div id="two">                
+                <button type="button" id="closeHist" name="closeHist"class="btn btn-primary btn-block rounded">Continuar inspeção >></button>
+                <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
+            </div>
+
+           
+
+        </div>     
+            
+    </form>                  
+
+        
+        
+

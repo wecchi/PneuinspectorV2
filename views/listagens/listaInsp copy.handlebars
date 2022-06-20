@@ -1,0 +1,126 @@
+<script>
+   var array=[];
+   {{#each Inspecoes}}
+      array.push([
+      {{id}},
+      '{{placas}}',
+      '{{tipo}}',
+      '{{modelo}}',
+      '{{fabricante}}',
+      '{{ano_fabr}}',
+      '{{prefixo}}',
+      '{{qteeixors}}',
+      '{{qteeixord}}',
+      '{{qteeixos}}',
+      '{{qtepneus}}',
+      '{{base}}',
+      moment('{{createdAt}}').format('DD/MM/YYYY hh:mm'),
+      moment('{{updatedAt}}').format('DD/MM/YYYY hh:mm')  
+      ])
+   {{/each}}
+
+
+
+   $(document).ready(
+      function () {  
+         var table =$('#Registros').DataTable(
+            {  
+               select: {
+                  style: 'single'
+               },
+               limit:10,
+
+               data: array,
+               columns: [
+               { title: "id"},
+               { title: "placas"},
+               { title: "tipo"},
+               { title: "modelo"},
+               { title: "fabricante"},
+               { title: "ano_fabr"},
+               { title: "prefixo"},
+               { title: "qteeixors"},
+               { title: "qteeixord"},
+               { title: "qteeixos"},   
+               { title: "qtepneus"},
+               { title: "base"},
+               { title: "createdAt"},
+               { title: "updatedAt"}
+               ],
+               "language": {
+               "lengthMenu": "Mostrar _MENU_",
+               "zeroRecords": "Sem resultados",
+               "info": "Pagina _PAGE_ de _PAGES_",
+               "infoEmpty": "Sem resultados",
+               "infoFiltered": "(Filtro _MAX_ registros)",
+               "search":" Procurar ",
+               "first": "Primeiro",
+               "last": "Último",
+               "next": "Próximo",
+               "previous": "Anterior"
+               },  
+
+               dom: 'Bfrtip',
+               select: true,
+               buttons: [             
+                  {  
+                     text: 'Editar',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                        }else{
+                          var id = table.rows( { selected: true } ).data()[0][0]; 
+                           window.location = '/edits/veiculos/'+id;   
+                        }
+                     }
+                  },
+                  {  
+                     text: 'Excluir',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                        }else{
+                          var id = table.rows( { selected: true } ).data()[0][0];
+                          var placa = table.rows( { selected: true } ).data()[0][1]; 
+                           var txt;
+                           if (confirm("Confirma a exclusão do veiculo "+ placa+" ?")) {
+                                 window.location = '/dels/veiculos/'+id;  
+                           } 
+                        }
+                     }
+                  },
+                  {  
+                     text: 'Novo',
+                     action: function (e, dt, button, config) {
+                        window.location = '/cadastros/veiculos/';
+                        
+                           
+                     }
+                  },
+                 
+               ]
+            }                   
+         );
+      }    
+   ) 
+</script> 
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{texto}}
+    </div>
+{{/each}}  
+ 
+<br>
+
+<h3><b> VEÍCULOS</b></h3>
+<p id="demo"></p>
+
+
+<div class="table-wrapper">
+   <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
+</div>
+
+
+    

@@ -1,0 +1,213 @@
+<script>
+      
+   var array=[];
+   {{#each Pneus}}
+    array.push([
+    {{id}},
+    '{{nro_fogo}}',
+    '{{fabricante}}',
+    '{{modelo}}',
+    '{{largura}}',
+    '{{perfil}}',
+    '{{tipo}}',
+    '{{diametro}}',
+    '{{carga_max}}',
+    '{{local}}',
+    '{{eixo}}',
+    '{{lado}}',
+    '{{posicao}}',
+     moment('{{createdAt}}').format('DD/MM/YYYY hh:mm'),
+     moment('{{updatedAt}}').format('DD/MM/YYYY hh:mm')         
+      ])
+   {{/each}}
+   
+  
+   $(document).ready(
+      function () {  
+         
+       
+         $('#id').hide()
+         $('#two').hide()
+         var table =$('#Registros').DataTable(
+            {
+               select: {
+                  style: 'single'
+               },
+               data: array,
+               columns: [
+                { title: "id"},
+                { title: "nro_fogo"},
+                { title: "fabricante"},
+                { title: "modelo"},
+                { title: "largura"},
+                { title: "perfil"},
+                { title: "tipo"},
+                { title: "diametro"},
+                { title: "carga_max"},
+                { title: "local"},
+                { title: "eixo"},
+                { title: "lado"},
+                { title: "posicao"},
+                { title: "createdAt"},
+                { title: "updatedAt"}
+                   
+               ],
+               "language": {
+               "lengthMenu": "Mostrar _MENU_",
+               "zeroRecords": "Sem resultados",
+               "info": "Pagina _PAGE_ de _PAGES_",
+               "infoEmpty": "Sem resultados",
+               "infoFiltered": "(Filtro _MAX_ registros)",
+               "search":" Procurar ",
+               "first": "Primeiro",
+               "last": "Último",
+               "next": "Próximo",
+               "previous": "Anterior"
+               },
+
+               dom: 'Bfrtip',
+               select: true,
+               buttons: [             
+                  {  
+                     text: 'Editar',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                        }else{
+                          var id = table.rows( { selected: true } ).data()[0][0]; 
+                           window.location = '/edits/pneus/'+id;   
+                        }
+                     }
+                  },
+                  {  
+                     text: 'Excluir',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                        }else{
+                          var id = table.rows( { selected: true } ).data()[0][0];
+                          var nrofogo = table.rows( { selected: true } ).data()[0][1]; 
+                           var txt;
+                           if (confirm("Confirma a exclusão do pneu "+ nrofogo+" ?")) {
+                                 window.location = '/dels/pneus/'+id;  
+                           } 
+                        }
+                     }
+                  },
+                  {  
+                     text: 'Novo',
+                     action: function (e, dt, button, config) {
+                        window.location = '/cadastros/pneus/';
+                        
+                           
+                     }
+                  },
+                  {  
+                     text: 'Emparelhar',
+                     action: function () {
+                        if(table.rows( { selected: true } ).data().length==0){
+                           window.alert("Selecione uma linha antes de clicar")
+                           
+                        }else{
+                           var id = table.rows( { selected: true } ).data()[0][0]; 
+                           var nro_fogo = table.rows( { selected: true } ).data()[0][1]; 
+                           $('#id').val(id)
+                           $('#nro_fogo').val(nro_fogo)
+                           $('#textNfogo').val(nro_fogo)
+                           $('#one').hide()
+                           $('#two').show()
+
+                        }
+                     }
+                   
+                  }
+               ]
+            
+            }            
+         );
+      }    
+   ) 
+</script>
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{texto}}
+    </div>
+{{/each}}  
+ 
+<br>
+<p id="demo"></p>
+<h3><b> PNEUS</b></h3>
+
+<div id="one">
+   
+   <div class="table-wrapper">
+      <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
+   </div>
+</div>
+
+<div id="two">
+  
+  <div>
+    <form class="form-inline" id="empForm" action ="/posts/emparelhamentos" name ="empForm" method="POST"> 
+      
+       
+      
+        <input type="text" id="id" name="id" required>
+        
+     
+
+      <div class="itema">  
+        <p>Nro fogo<span class="required"></span></p> 
+        <input type="text" id="nro_fogo" name="nro_fogo" style="background-color:blue;color:white"readonly required>
+      </div>
+           
+      <div class="itema">  
+        <p>Placa<span class="required">*</span></p>
+        <select id="placa" name="placa" required>
+          <option value=""></option>
+          {{#each Placas}}    
+          <option value={{placas}}>{{placas}}</option>  
+          {{/each}}
+        </select> 
+      </div>
+
+      <div class="itema">  
+        <p>Eixo<span class="required">*</span></p>
+        <select id="eixo" name="eixo" required>
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="4">5</option>
+          <option value="4">6</option>
+        </select>
+      </div>
+      <div class="itema">  
+        <p>Lado<span class="required">*</span></p>
+        <select id="lado" name="lado" required>
+          <option value=""></option>
+          <option value="DIREITO">DIREITO</option>
+          <option value="ESQUERDO">ESQUERDO</option>
+        </select> 
+      </div>
+      <div class="itema">  
+        <p>Posição<span class="required">*</span></p>
+        <select id="posicao" name="posicao" required>
+          <option value=""></option>
+          <option value="EXTERNO">EXTERNO</option>
+          <option value="INTERNO">INTERNO</option>
+        </select>  
+      </div>         
+      <div class="itema" style="margin-left:30px;heigth:50%">
+        
+        <button type="submit">✚ Adicionar</button> 
+      </div> 
+    </form>  
+    
+  </div>    
+</div>
+
+<br> 

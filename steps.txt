@@ -1,0 +1,32 @@
+https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Express_Nodejs/development_environment
+
+instalar node
+mkdir #crie uma pasta pro projeto
+cd #entre na pasta
+npm init #inicialize sua aplicação Node
+npm install express
+npm install express-generator -g
+
+var express = require('express')
+var app = express()
+
+
+instalar mysql
+instalar mysqlworkbench
+npm instal --save sequelize
+npm install --save mysql2
+npm install --save handlebars
+npm install --save dotenv
+npm install --save body-parser
+npm install --save express-session
+npm install --save connect-flash
+
+DATABASE 
+C:\Users\Jose Carlos>mysql -h localhost -u root -p
+SHOW DATABASES
+SHOW TABLES
+USE name
+
+para criar um model export sequelize e importe na pasta com modelo
+depois execute no cmd
+depois de gerar, comente o Post.sync

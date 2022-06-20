@@ -1,0 +1,50 @@
+
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{texto}}
+    </div>
+{{/each}}  
+ 
+<body>
+
+   <div class="testbox">
+  
+    <form id="insptForm" action ="/posts/inspetores" name ="insptForm" method="POST">       
+      
+      <div class="bannerMot">
+        <h1><b>Editar Inspetor</b></h1>
+      </div>
+      
+     
+                
+      <div class="position-item">
+        <div class="item">
+          <p>Nome<span class="required">*</span></p>
+          <input type="text" name="nome" id="nome" value={{Inspetor.nome}} required>
+        </div>
+        
+        <div class="item">
+          <p>Email<span class="required"></span></p>
+          <input type="email" name="email" id="email" value={{Inspetor.email}}>
+        </div>
+      </div>  
+       <div class="position-item">  
+        <div class="item">
+          <p>Contato<span class="required">*</span></p>
+          <input type="text" id="contato" name="contato" value= {{Inspetor.contato}}>
+        </div>     
+        
+        <div class="item">
+          <p>Matricula<span class="required">*</span></p>
+          <input type="text" id="matricula" name="matricula" value= {{Inspetor.matricula}} required>
+        </div>
+   
+      </div>
+      
+      <div class="btn-block">
+       <button class="btn btn-success" type="submit"><b>Salvar</b></button>
+      <button class="btn btn-warning" type="button"><b>Cancelar</b></button>
+      </div>
+    </form>
+  </div>
+</body>
