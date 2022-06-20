@@ -30,3 +30,7 @@ USE name
 para criar um model export sequelize e importe na pasta com modelo
 depois execute no cmd
 depois de gerar, comente o Post.sync
+
+deploy heroku 
+
+heroku logs --app (nome app) para ver log

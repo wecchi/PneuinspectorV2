@@ -28,7 +28,7 @@
   
 
   //TRABALHAR COM SESSOES
-  const session = require('express-session')
+  const session = require('cookie-session')
   
   //TRABALHAR COM COOOKIES
   const flash = require('connect-flash')
