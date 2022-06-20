@@ -83,6 +83,6 @@
     })   
   //
     
-  app.listen(8081, function(){
+  app.listen(3306, function(){
   console.log('servidor conectado')
 })
