@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 //conexao Mysql Sequelize//
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('sydnut8a2tojn9lr','qfwpcsgjhbk9a9fs','im8q8faxr8d7ypqn',{
@@ -11,3 +12,5 @@ const sequelize = new Sequelize('sydnut8a2tojn9lr','qfwpcsgjhbk9a9fs','im8q8faxr
     Sequelize : Sequelize,
     sequelize : sequelize
  }
+=======
+>>>>>>> 637db3d7f2e3548f3fe531d0ac03473b77b6c52a
