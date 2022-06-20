@@ -1,6 +1,7 @@
   //MODULOS
   const express = require('express')
   const app = express()  
+  const PORT = process.env.PORT || 5000
   
   //TRABALHAR COM HTML
   const handlebars = require('express-handlebars')
@@ -83,6 +84,4 @@
     })   
   //
     
-  app.listen(3306, function(){
-  console.log('servidor conectado')
-})
+  app.listen(process.env.PORT || 5000)
