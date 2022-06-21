@@ -15,6 +15,7 @@
   const listagens = require('./routes/listagens') 
   const menus = require('./routes/menus')
   const posts = require('./routes/posts')
+  const updates = require('./routes/updates')
   const dels = require('./routes/dels')
   const edits = require('./routes/edits')
 
@@ -74,7 +75,8 @@
       app.use('/cadastros',cadastros) 
       app.use('/listagens',listagens) 
       app.use('/menus',menus) 
-      app.use('/posts',posts) 
+      app.use('/posts',posts)
+      app.use('/updates',updates)       
       app.use('/dels',dels) 
       app.use('/edits',edits) 
       
@@ -84,4 +86,4 @@
     })   
   //
     
-  app.listen(8081)
+  app.listen(process.env.PORT || 5000)

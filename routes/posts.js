@@ -129,36 +129,5 @@ router.post('/inspecao', function(req,res){
     })
 })
 
-router.post('/emparelhamentos',
-    function (req,res){
-        Pneus.findOne({where: {'id': req.body.id}}).then(
-            function(pneu){        
-                pneu.local=req.body.placa,
-                pneu.eixo=req.body.eixo,
-                pneu.lado=req.body.lado,
-                pneu.posicao=req.body.posicao
-                pneu.save().then(
-                    function(){
-                        req.flash('success_msg', "Emparelhamento registrado com sucesso")                        
-                            
-                        Pneus.findAll({order: [['id','DESC']]}).then(
-                            function(Pneus){
-                              Veiculos.findAll({attributes: ['placas'],order: [['placas','ASC']]}).then(
-                                function(Placas){
-                                  res.render('listagens/listaPne', {Pneus:Pneus,Placas:Placas})
-                                }
-                              )   
-                            }
-                        )
-                            
-                    }
-                ).catch(
-                    function(erro){
-                        req.flash('error_msg', "Houve um erro na registro do emparelhamento")
-                    }
-                )
-            }
-        )
-    }    
-)
+
 module.exports = router

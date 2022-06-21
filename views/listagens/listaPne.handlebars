@@ -113,9 +113,29 @@
                         }else{
                            var id = table.rows( { selected: true } ).data()[0][0]; 
                            var nro_fogo = table.rows( { selected: true } ).data()[0][1]; 
+                           var local_placa=table.rows( { selected: true } ).data()[0][9]; 
+                           var eixo=table.rows( { selected: true } ).data()[0][10]; 
+                           var lado=table.rows( { selected: true } ).data()[0][11]; 
+                           var posicao=table.rows( { selected: true } ).data()[0][12]; 
+                           
+                           
+                           
                            $('#id').val(id)
                            $('#nro_fogo').val(nro_fogo)
-                           $('#textNfogo').val(nro_fogo)
+
+                           $('#local').append($(document.createElement('option')).prop(
+                              {value: local_placa,text: local_placa}
+                           ).attr('selected',true)) 
+                           $('#eixo').append($(document.createElement('option')).prop(
+                              {value: eixo,text: eixo}
+                           ).attr('selected',true))     
+                           $('#lado').append($(document.createElement('option')).prop(
+                              {value: lado,text: lado}
+                           ).attr('selected',true))     
+                           $('#posicao').append($(document.createElement('option')).prop(
+                              {value: posicao,text: posicao}
+                           ).attr('selected',true))                   
+                                              
                            $('#one').hide()
                            $('#two').show()
 
@@ -137,76 +157,89 @@
 {{/each}}  
  
 <div id="one">
-<div class="container-fluid bg-light">
-<div class="jumbotron jumbotron-fluid bg-light h-100">
-   <h3><b> PNEUS</b></h3>
-   <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
+   <div class="container-fluid bg-light">
+      <div class="jumbotron jumbotron-fluid bg-light h-100">
+         <h3><b> PNEUS</b></h3>
+         <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
+      </div>
+   </div>
 </div>
-</div>
-
 
 
 <div id="two">
   
-  <div>
-    <form class="form-inline" id="empForm" action ="/posts/emparelhamentos" name ="empForm" method="POST"> 
-      
+   <div class="container-fluid bg-light">
+      <div class="banner">
+            <h3><b>EMPARELHAMENTO DE PNEU NA FROTA</b></h3>
+         </div> 
+      <form class="form-inline" id="empForm" action ="/updates/emparelhamentos" name ="empForm" method="POST"> 
+
+         
        
       
-        <input type="text" id="id" name="id" required>
-        
+         <input type="text" id="id" name="id" required>
+         
+      
+
+         <div class="mb-3">
+            <label for="nro_fogo" class="form-label">Número de fogo</label> 
+            <input type="text" id="nro_fogo" name="nro_fogo" class="form-control bg-primary mr-4 text-white"readonly required>
+         </div>
+            
+         
+         <div class="mb-3">
+            <label for="local" class="form-label">Local ou Placa</label>
+            <select name="local" class="form-control m-2"  id="local">
+               <option value=""></option>
+               <option value="ESTOQUE">ESTOQUE</option>
+               {{#each Placas}}    
+                  <option value={{placas}}>{{placas}}</option>  
+               {{/each}}
+            </select>  
+         </div>
+   
+         <div class="mb-3">
+            <label for="eixo" class="form-label">Eixo</label>
+            <select id="eixo" class="form-control mr-2"  name="eixo" required>
+               <option value=""></option>
+               <option value="ESTOQUE">ESTOQUE</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="4">5</option>
+               <option value="4">6</option>
+            </select>
+         </div>            
+      
+         <div class="mb-3">
+            <label for="lado" class="form-label">Lado</label>
+            <select id="lado" class="form-control mr-2"  name="lado" required>
+                <option value=""></option>
+               <option value="ESTOQUE">ESTOQUE</option>
+               <option value="DIREITO">DIREITO</option>
+               <option value="ESQUERDO">ESQUERDO</option>
+            </select> 
+         </div>     
+         
+   
+         <div class="mb-3">
+            <label for="posicao" class="form-label">Posição</label>
+            <select id="posicao" class="form-control mr-2"  name="posicao" required>
+               <option value=""></option>
+               <option value="ESTOQUE ">ESTOQUE</option>
+               <option value="EXTERNO">EXTERNO</option>
+               <option value="INTERNO">INTERNO</option>
+            </select>  
+         </div>
+   
+   
+         <div class="mb-3">
+         <br>
+            <button class="btn btn-success" type="submit"><b>Salvar</b></button>
+         </div>
      
+      </form>
+   </div>   
 
-      <div class="itema">  
-        <p>Nro fogo<span class="required"></span></p> 
-        <input type="text" id="nro_fogo" name="nro_fogo" style="background-color:blue;color:white"readonly required>
-      </div>
-           
-      <div class="itema">  
-        <p>Placa<span class="required">*</span></p>
-        <select id="placa" name="placa" required>
-          <option value=""></option>
-          {{#each Placas}}    
-          <option value={{placas}}>{{placas}}</option>  
-          {{/each}}
-        </select> 
-      </div>
-
-      <div class="itema">  
-        <p>Eixo<span class="required">*</span></p>
-        <select id="eixo" name="eixo" required>
-          <option value=""></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="4">5</option>
-          <option value="4">6</option>
-        </select>
-      </div>
-      <div class="itema">  
-        <p>Lado<span class="required">*</span></p>
-        <select id="lado" name="lado" required>
-          <option value=""></option>
-          <option value="DIREITO">DIREITO</option>
-          <option value="ESQUERDO">ESQUERDO</option>
-        </select> 
-      </div>
-      <div class="itema">  
-        <p>Posição<span class="required">*</span></p>
-        <select id="posicao" name="posicao" required>
-          <option value=""></option>
-          <option value="EXTERNO">EXTERNO</option>
-          <option value="INTERNO">INTERNO</option>
-        </select>  
-      </div>         
-      <div class="itema" style="margin-left:30px;heigth:50%">
-        
-        <button type="submit">✚ Adicionar</button> 
-      </div> 
-    </form>  
-    
-  </div>    
 </div>
-
-<br> 

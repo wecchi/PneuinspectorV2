@@ -5,234 +5,208 @@
     </div>
 {{/each}} 
 
-
-<body>
-  <div class="testbox">
-    <form id="pneuForm" action ="/posts/pneus" name ="pneuForm" method="POST">      
-      
-      <div class="bannerPneu">        
-        <h1><b>Editar Pneu</b></h1>
-      </div>
-                
-      <div class="position-item">
-        
-        <div class="item">
-          <p>Numero de fogo<span class="required">*</span></p>
-          <input type="text" name="nro_fogo" id="nro_fogo" value={{Pneu.nro_fogo}} readonly required>
-        </div>
-
-        <div class="item">
-          <p>Data da compra<span class="required">*</span></p>
-          <input type="date" name="dt_compra" id="dt_compra" value={{Pneu.dt_compra}} required>
-        </div>
-      </div>
-
-        <div class="position-item">
-        
-        <div class="item">
-          <p>Nota fiscal<span class="required"></span></p>
-          <input type="text" name="nota_fiscal" id="nota_fiscal"value={{Pneu.nota_fiscal}} >
-        </div>
-
-        <div class="item">
-          <p>Fabricante<span class="required">*</span></p>
-           <select name="fabricante" id="fabricante" value= equired>
-            <option value={{Pneu.fabricante}}>{{Pneu.fabricante}}</option>
-            <option value="ADVANCE">ADVANCE</option>
-            <option value="AEOLUS">AEOLUS</option><option value="ALLIANCE">ALLIANCE</option>
-            <option value="ALPINE">ALPINE</option><option value="ALUX">ALUX</option>
-            <option value="AMAZON">AMAZON</option><option value="ANTEO">ANTEO</option>
-            <option value="AOSEN">AOSEN</option><option value="APOLLO">APOLLO</option>
-            <option value="APTANY">APTANY</option<option value="ARMOUR">ARMOUR</option>
-            <option value="ATLAS">ATLAS</option><option value="ATRIO">ATRIO</option>
-            <option value="BFGOODRICH">BFGOODRICH</option><option value="BRASTUBE">BRASTUBE</option>
-            <option value="BARUM">BARUM</option><option value="BRIDGESTONE">BRIDGESTONE</option>
-            <option value="BRW">BRW</option><option value="CASTROL">CASTROL</option>
-            <option value="CARGOPOWER">CARGOPOWER</option><option value="CEAT">CEAT</option>
-            <option value="CENTELLA">CENTELLA<option value=""><option value="CHALLENGER">CHALLENGER</option>
-            <option value="CINBORG">CINBORG</option><option value="CONTINENTAL">CONTINENTAL</option>
-            <option value="COOPER">COOPER</option><option value="CORDIANT">CORDIANT</option>
-            <option value="CULTOR">CULTOR</option><option value="DAYTON">DAYTON</option>
-            <option value="DOUBLESTAR">DOUBLESTAR</option><option value="DRC">DRC</option>
-            <option value="DPLUS">DPLUS</option><option value="DUNLOP">DUNLOP</option>
-            <option value="FALKEN">FALKEN</option><option value="FARROAD">FARROAD</option>
-            <option value="FATE">FATE</option><option value="FIRESTONE">FIRESTONE</option>
-            <option value="FORMULA">FORMULA</option><option value="GA FLEX">GA FLEX</option>option>
-            <option value="GENERAL TIRE">GENERAL TIRE</option><option value="GOFORM">GOFORM</option>
-            <option value="GOODRIDE">GOODRIDE</option><option value="GOODYEAR">GOODYEAR</option>
-            <option value="GT RADIAL">GT RADIAL</option><option value="HABILEAD">HABILEAD</option>
-            <option value="HANKOOK">HANKOOK</option><option value="HORIZON">HORIZON</option>
-            <option value="IRIS">IRIS</option><option value="ITARO">ITARO</option>
-            <option value="JK TYRE">JK TYRE</option><option value="KELLY">KELLY</option>
-            <option value="KUMHO">KUMHO</option><option value="LANDE">LANDE</option>
-            <option value="LEVORIN">LEVORIN</option><option value="LINGLONG">LINGLONG</option>
-            <option value="MAGGION">MAGGION</option><option value="MARSHAL">MARSHAL</option>
-            <option value="MASTERCRAFT">MASTERCRAFT</option><option value="MAXXIS">MAXXIS</option>
-            <option value="METZELER">METZELER</option><option value="MICHELIN">MICHELIN</option>
-            <option value="MULTILASER">MULTILASER</option><option value="NANKANG">NANKANG</option>
-            <option value="NEREUS">NEREUS</option><option value="NEXEN">NEXEN</option>
-            <option value="PIONEER">PIONEER</option><option value="PIRELLI">PIRELLI</option>
-            <option value="PÓSITRON">PÓSITRON</option><option value="RANGER">RANGER</option>
-            <option value="RINALDI">RINALDI</option><option value="ROADGUIDER">ROADGUIDER</option>
-            <option value="ROADMASTER">ROADMASTER</option><option value="ROBUST">ROBUST</option>
-            <option value="SAFERICH">SAFERICH</option><option value="SAILUN">SAILUN</option>
-            <option value="SEIBERLING">SEIBERLING</option><option value="SEMPERIT">SEMPERIT</option>
-            <option value="SONAR">SONAR</option><option value="SUNNY">SUNNY</option>
-            <option value="SPEEDMAX">SPEEDMAX</option><option value="SPEEDWAYS">SPEEDWAYS</option>
-            <option value="SUPERGUIDER">SUPERGUIDER</option><option value="TAURUS">TAURUS</option>
-            <option value="TAIGA">TAIGA</option><option value="TEGRYS">TEGRYS</option>
-            <option value="TIGAR">TIGAR</option><option value="TITAN">TITAN</option>
-            <option value="TORNEL">TORNEL</option><option value="TOYO">TOYO</option>
-            <option value="THREE-A">THREE-A</option><option value="TRISTAR">TRISTAR</option>
-            <option value="TRIANGLE">TRIANGLE</option><option value="VELLUX">VELLUX</option>
-            <option value="VIKING">VIKING</option><option value="VITOUR">VITOUR</option>
-            <option value="WESTLAKE">WESTLAKE</option><option value="WSP">WSP</option>
-            <option value="XBRI">XBRI</option><option value="YATONE">YATONE</option>
-            <option value="ZETUM">ZETUM</option>          
-          </select>  
-        </div>
-      </div>         
-        
-      <div class="position-item">
-            
-        <div class="item">
-          <p>Modelo<span class="required">*</span></p>
-          <input type="text" name="modelo" id="modelo" value={{Pneu.modelo}} required/>
-        </div>
-
-        <div class="item">
-          <p>Largura<span class="required">*</span></p>
-          <input type="number" step="0.01" name="largura" id="largura" value={{Pneu.largura}} required>
-        </div>
-      </div>
-
-      <div class="position-item">
-            
-        <div class="item">
-          <p>Perfil<span class="required">*</span></p>
-          <input type="number" step="0.01" name="perfil" id="perfil" value={{Pneu.perfil}} required>
-        </div>
-
-        <div class="item">
-          <p>Tipo<span class="required"></span></p>
-          <select id="tipo" name="tipo" value="">
-            <option value={{Pneu.tipo}}>{{Pneu.tipo}}</option>
-            <option value="NORMAL">Normal</option>
-            <option value="RADIAL">Radial</option>
-          </select>  
-        </div>
-      </div>
-
-      <div class="position-item">
-            
-        <div class="item">
-          <p>Diâmetro<span class="required">*</span></p>
-          <input type="number" step="0.01" name="diametro" id="diametro" value={{Pneu.diametro}} required>
-        </div>
-
-        <div class="item">
-          <p>Carga max kg<span class="required">*</span></p>
-          <input type="number" step="0.01" name="carga_max" id="carga_max" value={{Pneu.carga_max}} required>
-        </div>
-      </div>
-
-
-      <div class="position-item">
-            
-        <div class="item">
-          <p>Pressão max bars<span class="required">*</span></p>
-          <input type="number" step="0.01" name="pressao_max" id="pressao_max" value={{Pneu.pressao_max}} required>
-        </div>
-
-        <div class="item">
-          <p>Índice de carga<span class="required"></span></p>
-          <input type="text" name="ind_carga" id="ind_carga" value={{Pneu.ind_carga}}>
-        </div>
-      </div>
-      
-      <div class="position-item">
-            
-        <div class="item">
-          <p>Índice de velocidade<span class="required"></span></p>
-          <input type="text"name="ind_vel" id="ind_vel"value={{Pneu.fabricante}}>
-        </div>
-
-        <div class="item">
-          <p>DOT<span class="required">*</span></p>
-          <input type="text" name="dot" id="dot" value={{Pneu.ind_vel}} required>
-        </div>
-      </div>
-
-      <div class="position-item">
-            
-        <div class="item">
-          <p>Severidade<span class="required"></span></p>
-          <input type="text"name="severidade" id="severidade"value={{Pneu.severidade}}>
-        </div>
-
-         <div class="item">
-          <p>Local<span class="required"></span></p>
-          <select name="local" id="local" value="ESTOQUE">
-            <option value={{Pneu.local}}>{{Pneu.local}}</option>
-            <option value="ESTOQUE">ESTOQUE</option>
-            {{#each Placas}}    
-              <option value={{placas}}>{{placas}}</option>  
-            {{/each}}
-          </select>  
-   
-        </div>
-      </div>
-
-      <div class="position-item">          
-                   
-        <div class="item">  
-          <p>Eixo<span class="required"></span></p>
-          <select id="eixo" name="eixo" required>
-            <option value={{Pneu.eixo}}>{{Pneu.eixo}}</option>
-            <option value="ESTOQUE">ESTOQUE</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="4">5</option>
-            <option value="4">6</option>
-          </select>
-        </div>            
-      
-        <div class="item">  
-          <p>Lado<span class="required"></span></p>
-          <select id="lado" name="lado" required>
-            <option value={{Pneu.lado}}>{{Pneu.lado}}</option>
-            <option value="ESTOQUE">ESTOQUE</option>
-            <option value="DIREITO">DIREITO</option>
-            <option value="ESQUERDO">ESQUERDO</option>
-          </select> 
-        </div>     
-        
+<div class = "container bg-light text-dark">
+  <br>
+  <div class="container-fluid w-50 mb-3 bg-white text-dark rounded">
+    <form id="pneuForm" action ="/updates/pneus" name ="pneuForm" method="POST">      
+      <br>
+      <div class="banner">
+        <h3><b> EDITAR PNEU</b></h3>
       </div> 
-      <div class="position-item">
-
-          <div class="item">  
-            <p>Posição<span class="required"></span></p>
-            <select id="posicao" name="posicao" required>
-              <option value={{Pneu.posicao}}>{{Pneu.posicao}}</option>
-              <option value="ESTOQUE ">ESTOQUE</option>
-              <option value="EXTERNO">EXTERNO</option>
-              <option value="INTERNO">INTERNO</option>
-            </select>  
-          </div>          
-        </div>
-      </div>    
-          
-       <div class="btn-block">
-       <button class="btn btn-success" type="submit"><b>Salvar</b></button>
-      <button class="btn btn-warning" type="reset"><b>Cancelar</b></button>
+      
+      <div class="mb-3">
+        <label for="id" class="form-label">ID</label>
+        <input type="text" class="form-control"  name="id" id="id" value={{Pneu.id}} redonly required>
+      </div>          
+      
+      
+      <div class="mb-3">
+        <label for="nro_fogo" class="form-label">Numero de fogo</label>   
+        <input type="text" class="form-control"  name="nro_fogo" id="nro_fogo" value={{Pneu.nro_fogo}} required>
       </div>
-             
+
+      <div class="mb-3">
+        <label for="dt_compra" class="form-label">Data da compra</label>
+        <input type="date" class="form-control"  name="dt_compra" id="dt_compra" value={{Pneu.dt_compra}} required>
+      </div>
       
+
+      <div class="mb-3">
+        <label for="nota_fiscal" class="form-label">Numero NF</label>
+        <input type="text" class="form-control"  name="nota_fiscal" id="nota_fiscal" value={{Pneu.nota_fiscal}} >
+      </div>
+
+      <div class="mb-3">
+        <label for="fabricante" class="form-label">Fabricante</label>
+        <select name="fabricante" class="form-control" id="fabricante" required>
+          <option value={{Pneu.fabricante}}>{{Pneu.fabricante}}</option>
+          <option value=""></option>
+          <option value="ADVANCE">ADVANCE</option>
+          <option value="AEOLUS">AEOLUS</option><option value="ALLIANCE">ALLIANCE</option>
+          <option value="ALPINE">ALPINE</option><option value="ALUX">ALUX</option>
+          <option value="AMAZON">AMAZON</option><option value="ANTEO">ANTEO</option>
+          <option value="AOSEN">AOSEN</option><option value="APOLLO">APOLLO</option>
+          <option value="APTANY">APTANY</option<option value="ARMOUR">ARMOUR</option>
+          <option value="ATLAS">ATLAS</option><option value="ATRIO">ATRIO</option>
+          <option value="BFGOODRICH">BFGOODRICH</option><option value="BRASTUBE">BRASTUBE</option>
+          <option value="BARUM">BARUM</option><option value="BRIDGESTONE">BRIDGESTONE</option>
+          <option value="BRW">BRW</option><option value="CASTROL">CASTROL</option>
+          <option value="CARGOPOWER">CARGOPOWER</option><option value="CEAT">CEAT</option>
+          <option value="CENTELLA">CENTELLA<option value=""><option value="CHALLENGER">CHALLENGER</option>
+          <option value="CINBORG">CINBORG</option><option value="CONTINENTAL">CONTINENTAL</option>
+          <option value="COOPER">COOPER</option><option value="CORDIANT">CORDIANT</option>
+          <option value="CULTOR">CULTOR</option><option value="DAYTON">DAYTON</option>
+          <option value="DOUBLESTAR">DOUBLESTAR</option><option value="DRC">DRC</option>
+          <option value="DPLUS">DPLUS</option><option value="DUNLOP">DUNLOP</option>
+          <option value="FALKEN">FALKEN</option><option value="FARROAD">FARROAD</option>
+          <option value="FATE">FATE</option><option value="FIRESTONE">FIRESTONE</option>
+          <option value="FORMULA">FORMULA</option><option value="GA FLEX">GA FLEX</option>option>
+          <option value="GENERAL TIRE">GENERAL TIRE</option><option value="GOFORM">GOFORM</option>
+          <option value="GOODRIDE">GOODRIDE</option><option value="GOODYEAR">GOODYEAR</option>
+          <option value="GT RADIAL">GT RADIAL</option><option value="HABILEAD">HABILEAD</option>
+          <option value="HANKOOK">HANKOOK</option><option value="HORIZON">HORIZON</option>
+          <option value="IRIS">IRIS</option><option value="ITARO">ITARO</option>
+          <option value="JK TYRE">JK TYRE</option><option value="KELLY">KELLY</option>
+          <option value="KUMHO">KUMHO</option><option value="LANDE">LANDE</option>
+          <option value="LEVORIN">LEVORIN</option><option value="LINGLONG">LINGLONG</option>
+          <option value="MAGGION">MAGGION</option><option value="MARSHAL">MARSHAL</option>
+          <option value="MASTERCRAFT">MASTERCRAFT</option><option value="MAXXIS">MAXXIS</option>
+          <option value="METZELER">METZELER</option><option value="MICHELIN">MICHELIN</option>
+          <option value="MULTILASER">MULTILASER</option><option value="NANKANG">NANKANG</option>
+          <option value="NEREUS">NEREUS</option><option value="NEXEN">NEXEN</option>
+          <option value="PIONEER">PIONEER</option><option value="PIRELLI">PIRELLI</option>
+          <option value="PÓSITRON">PÓSITRON</option><option value="RANGER">RANGER</option>
+          <option value="RINALDI">RINALDI</option><option value="ROADGUIDER">ROADGUIDER</option>
+          <option value="ROADMASTER">ROADMASTER</option><option value="ROBUST">ROBUST</option>
+          <option value="SAFERICH">SAFERICH</option><option value="SAILUN">SAILUN</option>
+          <option value="SEIBERLING">SEIBERLING</option><option value="SEMPERIT">SEMPERIT</option>
+          <option value="SONAR">SONAR</option><option value="SUNNY">SUNNY</option>
+          <option value="SPEEDMAX">SPEEDMAX</option><option value="SPEEDWAYS">SPEEDWAYS</option>
+          <option value="SUPERGUIDER">SUPERGUIDER</option><option value="TAURUS">TAURUS</option>
+          <option value="TAIGA">TAIGA</option><option value="TEGRYS">TEGRYS</option>
+          <option value="TIGAR">TIGAR</option><option value="TITAN">TITAN</option>
+          <option value="TORNEL">TORNEL</option><option value="TOYO">TOYO</option>
+          <option value="THREE-A">THREE-A</option><option value="TRISTAR">TRISTAR</option>
+          <option value="TRIANGLE">TRIANGLE</option><option value="VELLUX">VELLUX</option>
+          <option value="VIKING">VIKING</option><option value="VITOUR">VITOUR</option>
+          <option value="WESTLAKE">WESTLAKE</option><option value="WSP">WSP</option>
+          <option value="XBRI">XBRI</option><option value="YATONE">YATONE</option>
+          <option value="ZETUM">ZETUM</option>          
+        </select>  
+      </div>
       
-      
-    </form>
+      <div class="mb-3">
+        <label for="modelo" class="form-label">Modelo</label>
+        <input type="text" class="form-control"  name="modelo" id="modelo" value={{Pneu.modelo}} required>
+      </div>
+
+      <div class="mb-3">
+        <label for="largura" class="form-label">Largura</label>
+        <input type="number" class="form-control"  step="0.01" name="largura" id="largura" value={{Pneu.largura}} required>
+      </div>
+
+      <div class="mb-3">
+        <label for="perfil" class="form-label">Perfil</label>
+        <input type="number" class="form-control"  step="0.01" name="perfil" id="perfil" value={{Pneu.perfil}} required>
+      </div>
+
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo</label>
+        <select id="tipo" class="form-control"  name="tipo">
+          <option value={{Pneu.tipo}}>{{Pneu.tipo}}</option>
+          <option value=""></option>
+          <option value="NORMAL">NORMAL</option>
+          <option value="RADIAL">RADIAL</option>
+        </select>  
+      </div>
+
+      <div class="mb-3">
+        <label for="diametro" class="form-label">Diâmetro</label>
+        <input type="number" class="form-control"  step="0.01" name="diametro" id="diametro" value={{Pneu.diametro}} required>
+      </div>
+
+      <div class="mb-3">
+        <label for="carga_max" class="form-label">Carga máxima KG</label>
+        <input type="number" class="form-control"  step="0.01" name="carga_max" id="carga_max" value={{Pneu.carga_max}} required>
+      </div>
+
+      <div class="mb-3">
+        <label for="pressao_max" class="form-label">Pressão Máxima PSI</label>
+        <input type="number" class="form-control"  step="0.01" name="pressao_max" id="pressao_max" value={{Pneu.pressao_max}} required>
+      </div>
+
+     <div class="mb-3">
+        <label for="ind_carga" class="form-label">Índice de Carga</label>
+        <input type="text" class="form-control"  name="ind_carga" id="ind_carga" value={{Pneu.ind_carga}}  >
+      </div>
+
+      <div class="mb-3">
+        <label for="ind_vel" class="form-label">Sulco</label>
+        <input type="text" class="form-control" name="ind_vel" id="ind_vel" value={{Pneu.ind_vel}} >
+      </div>
+
+      <div class="mb-3">
+        <label for="dot" class="form-label">DOT</label>
+        <input type="text" class="form-control"  name="dot" id="dot" value={{Pneu.dot}}  required>
+      </div>
+
+      <div class="mb-3">
+        <label for="severidade" class="form-label">Observações</label>
+        <input type="text" class="form-control" name="severidade" id="severidade" value={{Pneu.severidade}} >
+      </div>
+
+      <div class="mb-3">
+        <label for="local" class="form-label">Local ou Placas</label>
+        <select name="local" class="form-control"  id="local">
+          <option value={{Pneu.local}}>{{Pneu.local}}</option>
+          <option value="ESTOQUE">ESTOQUE</option>
+          {{#each Placas}}    
+            <option value={{placas}}>{{placas}}</option>  
+          {{/each}}
+        </select>  
+      </div>
+ 
+      <div class="mb-3">
+        <label for="eixo" class="form-label">Eixo</label>
+        <select id="eixo" class="form-control"  name="eixo" required>
+          <option value={{Pneu.eixo}}>{{Pneu.eixo}}</option>
+          <option value="ESTOQUE">ESTOQUE</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="4">5</option>
+          <option value="4">6</option>
+        </select>
+      </div>            
+    
+      <div class="mb-3">
+        <label for="lado" class="form-label">Lado</label>
+        <select id="lado" class="form-control"  name="lado" required>
+          <option value={{Pneu.lado}}>{{Pneu.lado}}</option>
+          <option value="ESTOQUE">ESTOQUE</option>
+          <option value="DIREITO">DIREITO</option>
+          <option value="ESQUERDO">ESQUERDO</option>
+        </select> 
+      </div>     
+        
+  
+      <div class="mb-3">
+        <label for="posicao" class="form-label">Posição</label>
+        <select id="posicao" class="form-control"  name="posicao" required>
+          <option value={{Pneu.posicao}}>{{Pneu.posicao}}</option>
+          <option value="ESTOQUE ">ESTOQUE</option>
+          <option value="EXTERNO">EXTERNO</option>
+          <option value="INTERNO">INTERNO</option>
+        </select>  
+      </div>
+  
+  
+      <div class="btn-block">
+        <button class="btn btn-success" type="submit"><b>Salvar</b></button>
+      </div>
+    </div>
+  </form>
   </div>
 </body>
   

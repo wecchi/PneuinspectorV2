@@ -29,10 +29,6 @@ router.get('/pneus/:id',
     }
 )  
 
-
-
-
-
 router.get('/motoristas/:id', function(req,res){
     
     Motoristas.findByPk(req.params.id).then(function(Motorista){
