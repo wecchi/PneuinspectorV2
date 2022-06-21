@@ -2,18 +2,24 @@
   <script>
      
    var array=[];
-   {{#each Motoristas}}
+   {{#each Inspecoes}}
       array.push([
       {{id}},
-      '{{nome}}',
-      '{{email}}',
-      '{{contato}}',
-      '{{matricula}}',
-      '{{desc_cargo}}',
-      '{{desc_local}}',
-      '{{tipo}}',
-      moment('{{createdAt}}').format('DD/MM/YYYY hh:mm'),
-      moment('{{updatedAt}}').format('DD/MM/YYYY hh:mm')  
+      '{{timestampStart}}',
+      '{{nomeInsp}}',
+      '{{nomeMot}}',
+      '{{placas}}', 
+      '{{descVeic}}', 
+      '{{quilometragem}}', 
+      '{{nroFogo}}', 
+      '{{eixo}}', 
+      '{{lado}}', 
+      '{{posicao}}', 
+      '{{sulco}}', 
+      '{{pressao}}', 
+      '{{resultado}}',   
+      '{{classificacao}}'  
+      
       ])
    {{/each}}
   
@@ -23,17 +29,23 @@
             {
                data: array,
                columns: [
-               { title: "id"},
-               { title: "nome"},
-               { title: "email"},
-               { title: "contato"},
-               { title: "matricula"},
-               { title: "desc_cargo"},
-               { title: "desc_local"},
-               { title: "tipo"},
-               { title: "created"},
-               { title: "updated"}
+               { title: "ID"},
+               { title: "Dt/Hr"},
+               { title: "Nome insp"},
+               { title: "Nome mot"},
+               { title: "Placas"},
+               { title: "Desc Veic"},
+               { title: "Km"},
+               { title: "Nro Fogo"},
+               { title: "Eixo"},
+               { title: "Lado"},
+               { title: "Posição"},
+               { title: "Sulco"},
+               { title: "Pressão"},
+               { title: "resultado"},
+               { title: "classif"} 
                ],
+
                "language": {
                "lengthMenu": "Mostrar _MENU_",
                "zeroRecords": "Sem resultados",
@@ -58,7 +70,7 @@
                            
                         }else{
                           var id = table.rows( { selected: true } ).data()[0][0]; 
-                           window.location = '/edits/motoristas/'+id;   
+                           window.location = '/edits/inspecoes/'+id;   
                         }
                      }
                   },
@@ -70,10 +82,10 @@
                            
                          }else{
                           var id = table.rows( { selected: true } ).data()[0][0];
-                          var motorista = table.rows( { selected: true } ).data()[0][1]; 
+                          var inspetor = table.rows( { selected: true } ).data()[0][1]; 
                            var txt;
-                           if (confirm("Confirma a exclusão do(a) motorista "+ motorista+" ?")) {
-                                 window.location = '/dels/pneus/'+id;  
+                           if (confirm("Confirma a exclusão do(a) motorista "+ inspetor+" ?")) {
+                                 window.location = '/dels/inspecoes/'+id;  
                            } 
                         }
                      }
@@ -81,7 +93,7 @@
                   {  
                      text: 'Novo',
                      action: function (e, dt, button, config) {
-                        window.location = '/cadastros/motoristas/';
+                        window.location = '/admin/inspecao/';
                         
                            
                      }
@@ -101,8 +113,7 @@
  
 <div class="container-fluid bg-light">
 <div class="jumbotron jumbotron-fluid bg-light h-100">
-   <h3><b> MOTORISTAS</b></h3>
+   <h3><b> INSPEÇÕES</b></h3>
    <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
 </div>
 </div>
-

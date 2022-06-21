@@ -10,7 +10,7 @@ const { Sequelize } = require('../models/db')
 
 router.get('/inspecoes', function(req,res){
   Inspecoes.findAll({order: [['id','DESC']]}).then(function(Inspecoes){
-    res.render('listagens/listaIns', {Inspecoes : Inspecoes})
+    res.render('listagens/listaInsp', {Inspecoes : Inspecoes})
   })   
 })
 

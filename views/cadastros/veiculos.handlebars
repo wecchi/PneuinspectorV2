@@ -29,191 +29,168 @@
     </div>
 {{/each}}  
 
-
-
-<body>    
-    <div class="testbox">    
-
-    <form id="veicForm" action ="/posts/veiculos" name ="veicForm" method="POST">  
-      <div class="bannerVeic">      
-        <h1><b>Cadastro de Veiculos</b></h1>  
-      </div>
-
-      <div class="position-item">
-      
-        <div class="item">
-          <p>Placas<span class="required">*</span></p>
-          <input type="text" name="placas" id="placas" required/>
+<div class = "container bg-light text-dark">
+  <br>
+  <div class="container-fluid w-50 mb-3 bg-white text-dark rounded">
+    <form id="veicForm" action ="/posts/veiculos" name ="veicForm" method="POST">
+    <br>
+       <div class="banner">
+        <h3><b> NOVO VEICULO</b></h3>
+      </div> 
+                
+      <div class="mb-3">
+        <label for="placas" class="form-label">Placas</label>   
+        <input type="text"  class="form-control"  name="placas" id="placas" required/>
         </div>
       
-        <div class="item">
-          <p>Tipo veiculo<span class="required">*</span></p>
-          <select id="tipo" name="tipo">
-            <option value=""></option>
-            <option value="UTILITARIO">UTILITARIO</option>           
-            <option value="TOCO">TOCO</option>
-            <option value="TRUCK">TRUCK</option>
-            <option value="CAVALO">CAVALO</option>
-            <option value="CARRETA">CARRETA</option>            
-          </select>  
-        </div>
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo de Veículo</label>   
+        <select id="tipo"  class="form-control"  name="tipo">
+          <option value=""></option>
+          <option value="UTILITARIO">UTILITARIO</option>           
+          <option value="TOCO">TOCO</option>
+          <option value="TRUCK">TRUCK</option>
+          <option value="CAVALO">CAVALO</option>
+          <option value="CARRETA">CARRETA</option>            
+        </select>  
       </div>
-
-      <div class="position-item">
-
-        <div class="item">
-          <p>Modelo<span class="required">*</span></p>
-          <input type="text" id="modelo" name="modelo" required/>              
-        </div>     
-      
+   
+      <div class="mb-3">
+        <label for="modelo" class="form-label">Modelo</label>   
+        <input type="text"  class="form-control"  id="modelo" name="modelo" required/>              
+      </div>     
         
-        <div class="item">
-          <p>Fabricante<span class="required">*</span></p>
-          <select id="fabricante" name="fabricante"  required/>
-            <option value=""></option>
-            <option value="IVECO">IVECO</option>
-            <option value="MAN">MAN</option>
-            <option value="MERCEDEZ">MERCEDEZ-BENZ</option>
-            <option value="SCANIA">SCANIA</option>
-            <option value="VOLKSWAGEN">VOLKSWAGEM</option>
-            <option value="VOLVO">VOLVO</option>
-            <option value="OUTROS">OUTROS</option>
-          </select>  
-        </div>
-      </div>
+      <div class="mb-3">
+        <label for="fabricante" class="form-label">Fabricante</label>   
+        <select id="fabricante" class="form-control"   name="fabricante"  required/>
+          <option value=""></option>
+          <option value="IVECO">IVECO</option>
+          <option value="MAN">MAN</option>
+          <option value="MERCEDEZ">MERCEDEZ-BENZ</option>
+          <option value="SCANIA">SCANIA</option>
+          <option value="VOLKSWAGEN">VOLKSWAGEM</option>
+          <option value="VOLVO">VOLVO</option>
+          <option value="OUTROS">OUTROS</option>
+        </select>  
+      </div>    
 
-      <div class="position-item"> 
-        <div class="item">
-          <p>Ano fabricação<span class="required"></span></p>
-          <select id="ano_fabr" name="ano_fabr"> 
-            <option value=""></option>           
-            <option>1981</option><option>1982</option><option>1983</option><option>1984</option>
-            <option>1985</option><option>1986</option><option>1989</option><option>1990</option>
-            <option>1991</option><option>1992</option><option>1995</option><option>1996</option>
-            <option>1997</option><option>1998</option><option>1999</option><option>2000</option>
-            <option>2002</option><option>2003</option><option>2004</option><option>2006</option>
-            <option>2007</option><option>2008</option><option>2009</option><option>2010</option>
-            <option>2011</option><option>2012</option><option>2013</option><option>2014</option>
-            <option>2015</option><option>2016</option><option>2017</option><option>2018</option>
-            <option>2019</option><option>2020</option><option>2021</option><option>2022</option>
-          </select>  
-        </div>
-      
-      
-       
-        <div class="item">
-          <p>Prefixo<span class="required"></span></p>
-          <input type="text" name="prefixo" id="prefixo" required/>
-        </div>
-      </div>  
-
-
-
-      <div class="position-item"> 
-        <div class="item">
-          <p>Qte eixos rodagem simples (incluindo direção)<span class="required">*</span></p>
-          <select id="qteeixors" name="qteeixors">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </select>  
-        </div>
-
-        <div class="item">
-          <p>Qte eixos de rodagem dupla<span class="required">*</span></p>
-          <select id="qteeixord" name="qteeixord">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>  
-        </div>
+      <div class="mb-3">
+        <label for="ano_fabr" class="form-label">Ano de fabricação</label>   
+        <select id="ano_fabr" class="form-control"   name="ano_fabr"> 
+          <option value=""></option>           
+          <option>1981</option><option>1982</option><option>1983</option><option>1984</option>
+          <option>1985</option><option>1986</option><option>1989</option><option>1990</option>
+          <option>1991</option><option>1992</option><option>1995</option><option>1996</option>
+          <option>1997</option><option>1998</option><option>1999</option><option>2000</option>
+          <option>2002</option><option>2003</option><option>2004</option><option>2006</option>
+          <option>2007</option><option>2008</option><option>2009</option><option>2010</option>
+          <option>2011</option><option>2012</option><option>2013</option><option>2014</option>
+          <option>2015</option><option>2016</option><option>2017</option><option>2018</option>
+          <option>2019</option><option>2020</option><option>2021</option><option>2022</option>
+        </select>  
       </div>
       
-      <div class="position-item">
-        <div class="item">
-          <p>Qte total eixos <span class="required">*</span></p>
-          <select id="qteeixos" name="qteeixos">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>  
-        </div>
-
-        <div class="item">
-          <p>Qte total Pneus (Excluindo estepes)  <span class="required">*</span></p>
-          <select id="qtepneus" name="qtepneus">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-          </select>  
-        </div>
-      </div>   
-       
-      <div class="position-item">     
-        <div class="item">
-          <p>Qte. estepes<span class="required">*</span></p>
-          <select id="qteestepes" name="qteestepes" required/>
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>                        
-          </select>  
-        </div>    
-      
-        <div class="item">
-          <p>Local de pátio<span class="required"></span></p>
-          <select id="base" name="base">
-            <option value=""></option>
-            <option value="MATRIZ">MATRIZ</option>
-            <option value="FILIAL 1">FILIAL 1</option>
-            <option value="FILIAL 2">FILIAL 2</option>
-            <option value="PÁTIO 1">PÁTIO 1</option>
-            <option value="PÁTIO 2">PÁTIO 2</option>
-            <option value="GARAGEM 1">GARAGEM 1</option>
-            <option value="GARAGEM 2">GARAGEM 2</option>
-          </select>  
-        </div>
+      <div class="mb-3">
+        <label for="prefixo" class="form-label">Prefixo</label>   
+        <input type="text" class="form-control"   name="prefixo" id="prefixo" required/>
       </div>
 
+      <div class="mb-3">
+        <label for="qteeixors" class="form-label">Qte eixo(s) rodagem SIMPLES</label>   
+        <select id="qteeixors" class="form-control" name="qteeixors">
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>  
+      </div>
 
+      <div class="mb-3">
+        <label for="qteeixord" class="form-label">Qte eixo(s) rodagem DUPLA</label> 
+        <select id="qteeixord" class="form-control" name="qteeixord">
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>  
+      </div>
+      
+      <div class="mb-3">
+        <label for="qteeixos" class="form-label">Qte total de eixos</label>   
+        <select id="qteeixos" class="form-control" name="qteeixos">
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>  
+      </div>
 
+      <div class="mb-3">
+        <label for="qtepneus" class="form-label">Qte total de Pneus (excluído(s) estepe(s))</label>   
+        <select id="qtepneus" class="form-control" name="qtepneus">
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+        </select>  
+      </div>
+     
+      <div class="mb-3">
+        <label for="qteestepes" class="form-label">Qte total de estepes</label>   
+        <select id="qteestepes" class="form-control" name="qteestepes" required/>
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>                        
+        </select>  
+      </div>    
+      
+      <div class="mb-3">
+        <label for="base" class="form-label">Local de base</label>   
+        <select id="base" class="form-control" name="base">
+          <option value=""></option>
+          <option value="MATRIZ">MATRIZ</option>
+          <option value="FILIAL 1">FILIAL 1</option>
+          <option value="FILIAL 2">FILIAL 2</option>
+          <option value="PÁTIO 1">PÁTIO 1</option>
+          <option value="PÁTIO 2">PÁTIO 2</option>
+          <option value="GARAGEM 1">GARAGEM 1</option>
+          <option value="GARAGEM 2">GARAGEM 2</option>
+        </select>  
+      </div>
 
       <div class="btn-block">
-        <button type="submit">Registrar</button>
+        <button class="btn btn-success" type="submit"><b>Salvar</b></button>
       </div>
     </form>
   </div>

@@ -186,11 +186,7 @@
             }
         )
     }) 
-</script>  
-
- 
-
- 
+</script>   
 
 {{#each erros}}
     <div class="alert alert-danger">
@@ -198,190 +194,190 @@
     </div>
 {{/each}}  
     
-  
-    <form id="motForm" action ="/posts/inspecao" name ="motForm" method="POST" style="width:99%">   
+<div class = "container bg-light text-dark">
+  <br>
+    <div class="container-fluid w-50 mb-3 bg-white text-dark rounded">  
+        <form id="motForm" action ="/posts/inspecao" name ="motForm" method="POST" style="width:99%">   
 
-        <div class="position-item">      
-            
-            </div><div id="one">     
-                <div class="item">
-                    <p>Data/Hora inicio<span class="required">*</span></p>
-                    <input type="text" id="timestampStart" name="timestampStart" class="form-control" readonly required>
-                </div>           
+            <br>
+            <div class="banner">
+               <h3><b> NOVA INSPEÇÃO</b></h3>
+            </div>  
+        
+            <div class="mb-3">
+                <label for="timestampStart" class="form-label">Data Hora</label>   
+                <input type="text" class="form-control" id="timestampStart" name="timestampStart" class="form-control" readonly required>
+            </div>           
                 
-                <div class="item">
-                    <p>Matricula do(a) Inspetor(a)<span class="required">*</span></p>
-                    <input type="text" list="inspList" id="matriculaInspt" name="matriculaInspt" class="form-control" required >
-                    <datalist id="inspList">
-                        <option value=""></option>
-                        {{#each Inspetores}}    
+            <div class="mb-3">
+                <label for="matriculaInspt" class="form-label">Numero matrícula inspetor</label>   
+                <input type="text" class="form-control" list="inspList" id="matriculaInspt" name="matriculaInspt" class="form-control" required >
+                <datalist id="inspList">
+                    <option value=""></option>
+                    {{#each Inspetores}}    
+                    <option value={{matricula}}>{{matricula}}</option>  
+                    {{/each}}  
+                </datalist>
+            </div> 
+
+            <div class="mb-3">
+                <label for="nomeInsp" class="form-label">Nome do inspetor</label>   
+                <input type="text" class="form-control" id="nomeInsp" name="nomeInsp" class="form-control"> 
+            </div> 
+
+            
+            <div class="mb-3">
+                <label for="matriculaMot" class="form-label">Numero matrícula motorista</label>   
+                <input type="text" class="form-control" list="motList" id="matriculaMot" name="matriculaMot" class="form-control" required>
+                <datalist id="motList">
+                    <option value=""></option>
+                    {{#each Motoristas}}    
                         <option value={{matricula}}>{{matricula}}</option>  
-                        {{/each}}  
-                    </datalist>
-                </div> 
+                    {{/each}}      
+                </datalist>
+            </div>
 
-                <div class="item">
-                    <p>Nome do(a) Inspetor(a)<span class="required">*</span></p>
-                    <input type="text" id="nomeInsp" name="nomeInsp" class="form-control"> 
-                    
-                </div> 
-
-            
-                <div class="item">
-                    <p>Matricula do(a) Motorista</span class="required">*</span></p>
-                    <input type="text" list="motList" id="matriculaMot" name="matriculaMot" class="form-control" required>
-                    <datalist id="motList">
-                        <option value=""></option>
-                        {{#each Motoristas}}    
-                            <option value={{matricula}}>{{matricula}}</option>  
-                        {{/each}}      
-                    </datalist>
-                </div>
-
-                <div class="item">
-                    <p>Nome do(a) Motorista</span class="required">*</span></p>
-                    <input type="text" id="nomeMot" name="nomeMot" class="form-control">
-                </div>
+            <div class="mb-3">
+                <label for="nomeMot" class="form-label">Nome do motorista</label>   
+                <input type="text" class="form-control" id="nomeMot" name="nomeMot" class="form-control">
+            </div>
                                  
-                <div class="item">
-                    <p>Placas do Veículo<span class="required">*</span></p>
-                    <input type="text" list="placasList" id="placas" name="placas"  class="form-control" required>
-                    <datalist  id="placasList">
-                        <option value=""></option>
-                        {{#each Veiculos}}    
-                        <option value={{placas}}>{{placas}}</option>  
-                        {{/each}}  
-                    </select>
-                </div> 
+            <div class="mb-3">
+                <label for="placas" class="form-label">Número da placa</label>   
+                <input type="text" class="form-control" list="placasList" id="placas" name="placas"  class="form-control" required>
+                <datalist  id="placasList">
+                    <option value=""></option>
+                    {{#each Veiculos}}    
+                    <option value={{placas}}>{{placas}}</option>  
+                    {{/each}}  
+                </datalist>
+            </div> 
 
-                <div class="item">
-                    <p>Descricão do Veiculo<span class="required">*</span></p>
-                    <textarea id="descVeic" name="descVeic" class="form-control" rows="5" columns="20" readonly ></textarea>
-                </div> 
+            <div class="mb-3">
+                <label for="descVeic" class="form-label">Descrição do veículo</label>   
+                <textarea id="descVeic" class="form-control" name="descVeic" class="form-control" rows="5" columns="20" readonly ></textarea>
+            </div> 
 
-                <div class="item">
-                    <p>Quilometragem<span class="required">*</span></p>
-                    <input type="number" id="quilometragem" name="quilometragem" class="form-control" required>
-                </div>
+            <div class="mb-3">
+                <label for="quilometragem" class="form-label">Quilometragem</label>   
+                <input type="number" class="form-control" id="quilometragem" name="quilometragem" class="form-control" required>
+            </div>
 
                 
-                <div class="item">
-                    <p>Nro de fogo do Pneu<span class="required">*</span></p>
-                    <input type="text" list="fogoList" id="nroFogo" name="nroFogo" class="form-control" required>
-                    <datalist id = "fogoList">
-                        <option value=""></option>
-                        {{#each Pneus}}    
-                        <option value={{nro_fogo}}>{{nro_fogo}}</option>  
-                        {{/each}}    
-                    </select>
-                </div>
+           <div class="mb-3">
+                <label for="nroFogo" class="form-label">Numero de fogo Pneu</label> 
+                <input type="text" class="form-control" list="fogoList" id="nroFogo" name="nroFogo" class="form-control" required>
+                <datalist id = "fogoList">
+                    <option value=""></option>
+                    {{#each Pneus}}    
+                    <option value={{nro_fogo}}>{{nro_fogo}}</option>  
+                    {{/each}}    
+                </datalist>
+            </div>
 
-                <div class="item">
-                    <button type="button" id="inspHist" name="inspHist"class="btn btn-primary btn-block rounded">histórico de inspeções</button>
-                </div>              
+            <div class="mb-3">
+                <label for="inspHist" class="form-label">Ver historico de inspeções</label>  
+                <button type="button" id="inspHist" name="inspHist"class="btn btn-primary btn-block rounded">histórico de inspeções</button>
+            </div>              
                 
 
               
-                <div class="item">
-                    <p>Eixo<span class="required">*</span></p>
-                    <select type="text" id="eixo" name="eixo" class="form-control" required>
-                       <option value=""></option>
-                        <option value="ESTOQUE">ESTOQUE</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="4">5</option>
-                        <option value="4">6</option>
-                    </select>
-                </div>
+            <div class="mb-3">
+                <label for="eixo" class="form-label">Eixo</label> 
+                <select type="text" class="form-control" id="eixo" name="eixo" class="form-control" required>
+                    <option value=""></option>
+                    <option value="ESTOQUE">ESTOQUE</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="4">5</option>
+                    <option value="4">6</option>
+                </select>
+            </div>
 
-                <div class="item">
-                    <p>Lado<span class="required">*</span></p>
-                    <select type="text" id="lado" name="lado" class="form-control" required>
-                        <option value=""></option>
-                        <option value="ESTOQUE">ESTOQUE</option>
-                        <option value="DIREITO">DIREITO</option>
-                        <option value="ESQUERDO">ESQUERDO</option>
-                    </select>
-                </div>
+            <div class="mb-3">
+                <label for="lado" class="form-label">Lado</label> 
+                <select type="text" class="form-control" id="lado" name="lado" class="form-control" required>
+                    <option value=""></option>
+                    <option value="ESTOQUE">ESTOQUE</option>
+                    <option value="DIREITO">DIREITO</option>
+                    <option value="ESQUERDO">ESQUERDO</option>
+                </select>
+            </div>
 
-                <div class="item">
-                    <p>Posicao<span class="required">*</span></p>
-                    <select type="text" id="posicao" name="posicao" class="form-control" required>
-                        <option value=""></option>
-                        <option value="ESTOQUE ">ESTOQUE</option>
-                        <option value="EXTERNO">EXTERNO</option>
-                        <option value="INTERNO">INTERNO</option> 
-                    </select>
-                </div>           
+            <div class="mb-3">
+                <label for="posicao" class="form-label">Posição</label> 
+                <select type="text" class="form-control" id="posicao" name="posicao" class="form-control" required>
+                    <option value=""></option>
+                    <option value="ESTOQUE ">ESTOQUE</option>
+                    <option value="EXTERNO">EXTERNO</option>
+                    <option value="INTERNO">INTERNO</option> 
+                </select>
+            </div>           
 
-                <div class="item">
-                    <p>Sulco mm<span class="required">*</span></p>
-                    <input type="number" id="sulco" name="sulco" class="form-control" required>
-                </div>
+            <div class="mb-3">
+                <label for="sulco" class="form-label">Sulco</label> 
+                <input type="number" class="form-control" id="sulco" name="sulco" class="form-control" required>
+            </div>
 
-                <div class="item">
-                    <p>Pressao bars<span class="required">*</span></p>
-                    <input type="number" id="pressao" name="pressao" class="form-control" required>
-                </div>        
+            <div class="mb-3">
+                <label for="pressao" class="form-label">Pressão</label> 
+                <input type="number" class="form-control" id="pressao" name="pressao" class="form-control" required>
+            </div>        
 
-                <div class="item">
-                    <p>Resumo da inspeção<span class="required">*</span></p>
-                    <select type="text" id="classificacao" name="classificacao" class="form-control" required>              
-                        <option value=""></option>
-                        <option value="PNEU EM BOM ESTADO">PNEU EM BOM ESTADO</option>
-                        <option value="PNEU EM MAU ESTADO - PERIGO">PNEU EM MAU ESTADO - PERIGO</option>
-                        <option value="DANO GRAVE LATERAL">DANO GRAVE LATERAL</option>
-                        <option value="DANO GRAVE COROA">DANO GRAVE COROA</option>
-                        <option value="DANO GRAVE TALAO">DANO GRAVE TALAO</option>
-                        <option value="PNEU RODOU VAZIO">PNEU RODOU VAZIO</option>
-                        <option value="RODA DANIFICADA">RODA DANIFICADA</option>
-                        <option value="PNEU FURADO">PNEU FURADO</option>
-                        <option value="PNEU EM ALERTA-SUCATA">PNEU EM ALERTA-SUCATA</option>
-                        <option value="PERFURACAO LATERAL">PERFURACAO LATERAL</option>
-                        <option value="DESEMPARELHADO">DESEMPARELHADO</option>
-                        <option value="RODIZIO NECESSARIO">RODIZIO NECESSARIO</option>
-                        <option value="DESENHO INCOMPATIVEL">DESENHO INCOMPATIVEL</option>
-                        <option value="INDICIO FADIGA CARCACA">INDICIO FADIGA CARCACA</option>
-                        <option value="DESALINHAMENTO">DESALINHAMENTO</option>
-                        <option value="LISO - REFORMAR">LISO - REFORMAR</option>
-                    </select>
-                </div>
+            <div class="mb-3">
+                <label for="classificacao" class="form-label">Classificação</label> 
+                <select type="text" class="form-control" id="classificacao" name="classificacao" class="form-control" required>              
+                    <option value=""></option>
+                    <option value="PNEU EM BOM ESTADO">PNEU EM BOM ESTADO</option>
+                    <option value="PNEU EM MAU ESTADO - PERIGO">PNEU EM MAU ESTADO - PERIGO</option>
+                    <option value="DANO GRAVE LATERAL">DANO GRAVE LATERAL</option>
+                    <option value="DANO GRAVE COROA">DANO GRAVE COROA</option>
+                    <option value="DANO GRAVE TALAO">DANO GRAVE TALAO</option>
+                    <option value="PNEU RODOU VAZIO">PNEU RODOU VAZIO</option>
+                    <option value="RODA DANIFICADA">RODA DANIFICADA</option>
+                    <option value="PNEU FURADO">PNEU FURADO</option>
+                    <option value="PNEU EM ALERTA-SUCATA">PNEU EM ALERTA-SUCATA</option>
+                    <option value="PERFURACAO LATERAL">PERFURACAO LATERAL</option>
+                    <option value="DESEMPARELHADO">DESEMPARELHADO</option>
+                    <option value="RODIZIO NECESSARIO">RODIZIO NECESSARIO</option>
+                    <option value="DESENHO INCOMPATIVEL">DESENHO INCOMPATIVEL</option>
+                    <option value="INDICIO FADIGA CARCACA">INDICIO FADIGA CARCACA</option>
+                    <option value="DESALINHAMENTO">DESALINHAMENTO</option>
+                    <option value="LISO - REFORMAR">LISO - REFORMAR</option>
+                </select>
+            </div>
 
-                <div class="item">
-                    <p>Parecer final da inspeção<span class="required">*</span></p>
-                    <select type="text" id="resultado" name="resultado" class="form-control" required>
-                        <option value=""></option>
-                        <option value="APROVADO">APROVADO</option> 
-                        <option value="APROVADO COM RESALVAS">APROVADO COM RESSALVAS</option>  
-                        <option value="REPROVADO">REPROVADO</option>  
-                    </select>
-                </div>
+            <div class="mb-3">
+                <label for="resultado" class="form-label">Resultado</label> 
+                <select type="text" class="form-control" id="resultado" name="resultado" class="form-control" required>
+                    <option value=""></option>
+                    <option value="APROVADO">APROVADO</option> 
+                    <option value="APROVADO COM RESALVAS">APROVADO COM RESSALVAS</option>  
+                    <option value="REPROVADO">REPROVADO</option>  
+                </select>
+            </div>
 
-                <div class="item">
-                    <p>Observações sobre a inspeção<span class="required">*</span></p>
-                    <textarea type="text" id="observacoes" name="observacoes" class="overflow-auto form-control" rows="3" cols="38"></textarea>
-                </div>
+            <div class="mb-3">
+                <label for="observacoes" class="form-label">Observações</label> 
+                <textarea type="text" class="form-control" id="observacoes" name="observacoes" class="overflow-auto form-control" rows="3" cols="38"></textarea>
+            </div>
 
-                <div class="item">
-                    <button type="submit" id="submit" name="submit"class="btn btn-success btn-block rounded">Registrar inspeção ✔</button>
-                </div> 
+            <div class="mb-3">                
+                <button type="submit" class="btn btn-success" id="submit" name="submit">Registrar inspeção ✔</button>
             </div> 
 
-                      
-            </div>
-
             <div id="two">                
-                <button type="button" id="closeHist" name="closeHist"class="btn btn-primary btn-block rounded">Continuar inspeção >></button>
+                <button type="button" class="btn btn-primary" id="closeHist" name="closeHist">Voltar a inspeção >></button>
                 <table  class="fl-table" id="Registros" class="display compact table table-striped" ></table> 
             </div>
+        </form>
+    </div> 
+</div>    
 
-           
-
-        </div>     
             
-    </form>                  
+                    
 
         
         

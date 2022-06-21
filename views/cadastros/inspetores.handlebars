@@ -5,49 +5,41 @@
     </div>
 {{/each}}  
  
-<body>
 
-   <div class="testbox">
-  
-    <form id="motForm" action ="/posts/inspetores" name ="motForm" method="POST">       
-      
-      <div class="bannerInspt">
-        <h1><b>Cadastro de Inspetores</b></h1>
+<div class = "container bg-light text-dark">
+  <br>
+  <div class="container-fluid w-50 mb-3 bg-white text-dark rounded">
+    <form id="inspt" action ="/posts/inspetores" name ="insptForm" method="POST">       
+    <br>
+      <div class="banner">
+        <h3><b> NOVO INSPETOR</h3>
+      </div>  
+    
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>   
+        <input type="text" class="form-control" name="nome" id="nome" required/>
       </div>
+    
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>   
+        <input type="email" class="form-control" name="email" id="email">
+      </div>    
       
-     
-                
-      <div class="position-item">
-        <div class="item">
-          <p>Nome<span class="required">*</span></p>
-          <input type="text" name="nome" id="nome" required/>
-        </div>
-      
-        <div class="item">
-          <p>Email<span class="required"></span></p>
-          <input type="email" name="email" id="email">
-        </div>
-     
-      <div class="position-item"></div>     
-        <div class="item">
-          <p>Contato<span class="required">*</span></p>
-          <input type="text" id="contato" name="contato" required>
-        </div>
-      
-        <div class="item">
-          <p>Matricula<span class="required">*</span></p>
-          <input type="text" id="matricula" name="matricula" required>
-        </div>
+      <div class="mb-3">
+        <label for="contato" class="form-label">Tel. Contato</label>   
+        <input type="text" class="form-control" id="contato" name="contato" required>
+      </div>
+    
+      <div class="mb-3">
+        <label for="matricula" class="form-label">Matrícula</label>   
+        <input type="text" class="form-control" id="matricula" name="matricula" required>
+      </div>
 
-        
-      </div>
-      
-      
-       
-      </div>        
       <div class="btn-block">
-        <button type="submit">Registrar</button>
+        <button class="btn btn-success" type="submit">Registrar</button>
       </div>
+
     </form>
-  </div>
-</body>
+  </div>  
+  <br>
+</div>
