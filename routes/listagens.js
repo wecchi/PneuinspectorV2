@@ -5,7 +5,7 @@ const Inspetores = require('../models/inspetores')
 const Motoristas = require('../models/motoristas')
 const Pneus = require('../models/pneus')
 const Veiculos = require('../models/veiculos')
-const { Sequelize } = require('../models/db')
+
 
 
 router.get('/inspecoes', function(req,res){

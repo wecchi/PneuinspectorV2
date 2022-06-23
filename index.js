@@ -18,6 +18,7 @@
   const updates = require('./routes/updates')
   const dels = require('./routes/dels')
   const edits = require('./routes/edits')
+  const querys = require('./routes/querys')
 
    //TRABALHAR COM DIALOG
   const dialog = require('dialog-node');
@@ -79,11 +80,14 @@
       app.use('/updates',updates)       
       app.use('/dels',dels) 
       app.use('/edits',edits) 
+      app.use('/querys',querys) 
       
       //ROUTER MENU
       app.get('/',(req,res)=>{
       res.render('menus/logo')
     })   
   //
-    
-  app.listen(process.env.PORT || 5000)
+  
+  
+  app.listen(8081)
+  //app.listen(process.env.PORT || 5000)
