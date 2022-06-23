@@ -104,62 +104,7 @@
         )
 
         
-        $('#inspHist').click(
-            function(){                   
-                var nrofogo=$('#nroFogo').val()
-                window.location = '/querys/inspecoes/'+nrofogo; 
-             
-             
-             
-             
-             
-
-                /*            
-                var arrayInsp=[]
-                {{#each Inspecoes}}   
-                    if('{{nroFogo}}'==fogo){
-                        var found = true
-                                                
-                        arrayInsp.push([                        
-                            '{{timestampStart}}',                               
-                            '{{nomeInsp}}',                               
-                            '{{nomeMot}}',                                    
-                            '{{placas}}',                                 
-                            '{{descVeic.Modelo}}',
-                            '{{quilometragem}}',
-                            '{{nroFogo}}',
-                            '{{eixo}}',
-                            '{{lado}}',
-                            '{{posicao}}',
-                            '{{sulco}}',
-                            '{{pressao}}',
-                            '{{resultado}}',
-                            '{{classificacao}}',
-                            '{{observacoes}}'                                
-                        ])
-                    } 
-                {{/each}}
-                console.log(arrayInsp)
-                          
-                if(found){ 
-                    $("#one").hide()
-                    $("#two").show()
-                }else{
-                    alert("Insira um numero de fogo")
-                } 
-                */
-                
-            }
-        )
-
-        $('#closeHist').click(
-            function(){  
-               $("#one").show()
-               $("#two").hide()
-               $("#eixo").focus()
-            }
-        )
-    }) 
+       
 </script>   
 
 {{#each erros}}
